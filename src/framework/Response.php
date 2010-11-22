@@ -13,4 +13,14 @@ class Response
     {
         $this->data[$key] = $value;
     }
+
+    public function getHeaders()
+    {
+        return $this->headers;
+    }
+
+    public function getData()
+    {
+        return $this->data;
+    }
 }

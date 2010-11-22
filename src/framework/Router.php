@@ -15,5 +15,7 @@ class Router
         if (isset($this->map[$uri])) {
             return new $this->map[$uri];
         }
+
+        throw new RuntimeException;
     }
 }
