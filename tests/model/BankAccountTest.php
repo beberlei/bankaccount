@@ -25,6 +25,7 @@ class BankAccountTest extends PHPUnit_Framework_TestCase
 
     /**
      * @covers            BankAccount::setBalance
+     * @covers            BankAccountException
      * @depends           testBalanceIsInitiallyZero
      * @expectedException BankAccountException
      */
@@ -35,6 +36,7 @@ class BankAccountTest extends PHPUnit_Framework_TestCase
 
     /**
      * @covers            BankAccount::withdrawMoney
+     * @covers            BankAccountException
      * @depends           testBalanceIsInitiallyZero
      * @expectedException BankAccountException
      */
@@ -45,6 +47,7 @@ class BankAccountTest extends PHPUnit_Framework_TestCase
 
     /**
      * @covers            BankAccount::depositMoney
+     * @covers            BankAccountException
      * @depends           testBalanceIsInitiallyZero
      * @expectedException BankAccountException
      */
