@@ -2,6 +2,7 @@
 class BankAccount
 {
     protected $balance = 0;
+    protected $id;
 
     public function getBalance()
     {
@@ -15,6 +16,16 @@ class BankAccount
         }
 
         $this->balance = $balance;
+    }
+
+    public function getId()
+    {
+        return $this->id;
+    }
+
+    public function setId($id)
+    {
+        $this->id = $id;
     }
 
     public function depositMoney($balance)
