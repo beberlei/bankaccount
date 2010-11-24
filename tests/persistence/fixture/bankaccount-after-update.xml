@@ -1,0 +1,5 @@
+<?xml version="1.0" ?>
+<dataset>
+  <bankaccount id="1" balance="0.0" />
+  <bankaccount id="2" balance="2.0" />
+</dataset>
