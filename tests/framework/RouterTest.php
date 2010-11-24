@@ -17,11 +17,11 @@ class RouterTest extends PHPUnit_Framework_TestCase
      */
     public function testDefaultControllerIsSelectedForDocumentRoot()
     {
-        $pdo = $this->getMockBuilder('PDO')
-                    ->setConstructorArgs(array('sqlite::memory:'))
-                    ->getMock();
+        $mapper = $this->getMockBuilder('BankAccountMapper')
+                       ->disableOriginalConstructor()
+                       ->getMock();
 
-        Registry::getInstance()->register('pdo', $pdo);
+        Registry::getInstance()->register('BankAccountMapper', $mapper);
 
         $request = new Request(array('REQUEST_URI' => '/'));
         $this->assertType('DefaultController', $this->router->route($request));

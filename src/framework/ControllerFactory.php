@@ -6,9 +6,7 @@ class ControllerFactory
         switch ($name) {
             case 'DefaultController': {
                 return new DefaultController(
-                  new BankAccountMapper(
-                    Registry::getInstance()->getObject('pdo')
-                  )
+                  Registry::getInstance()->getObject('BankAccountMapper')
                 );
             }
             break;

@@ -15,7 +15,10 @@ $router   = new Router(new ControllerFactory);
 $router->addRoute('/', 'DefaultController');
 
 Registry::getInstance()->register(
-  'pdo', new PDO('sqlite:' . __DIR__ . '/bankaccount.db')
+  'BankAccountMapper',
+  new BankAccountMapper(
+    new PDO('sqlite:' . __DIR__ . '/bankaccount.db')
+  )
 );
 
 $view = $front->dispatch($router);
