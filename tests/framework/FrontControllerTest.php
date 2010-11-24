@@ -8,6 +8,7 @@ class FrontControllerTest extends PHPUnit_Framework_TestCase
      * @covers FrontController::__construct
      * @covers FrontController::dispatch
      * @covers ControllerFactory::getController
+     * @covers ViewFactory::getView
      */
     public function testDispatchingWorksCorrectly()
     {

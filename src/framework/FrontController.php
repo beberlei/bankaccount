@@ -14,8 +14,13 @@ class FrontController
     {
         $controller = $router->route($this->request);
 
-        $view = $controller->execute(
+        $viewName = $controller->execute(
           $this->request, $this->response
+        );
+
+        $factory = new ViewFactory;
+        $view    = $factory->getView(
+          $viewName, $this->request, $this->response
         );
 
         return $view;

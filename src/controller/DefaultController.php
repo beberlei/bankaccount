@@ -14,6 +14,6 @@ class DefaultController extends Controller
 
         $response->setData('balance', $ba->getBalance());
 
-        return new DefaultView($request, $response);
+        return 'DefaultView';
     }
 }
