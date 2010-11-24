@@ -8,7 +8,7 @@ class RouterTest extends PHPUnit_Framework_TestCase
      */
     protected function setUp()
     {
-        $this->router = new Router;
+        $this->router = new Router(new ControllerFactory);
         $this->router->addRoute('/', 'DefaultController');
     }
 
@@ -17,6 +17,12 @@ class RouterTest extends PHPUnit_Framework_TestCase
      */
     public function testDefaultControllerIsSelectedForDocumentRoot()
     {
+        $pdo = $this->getMockBuilder('PDO')
+                    ->setConstructorArgs(array('sqlite::memory:'))
+                    ->getMock();
+
+        Registry::getInstance()->register('pdo', $pdo);
+
         $request = new Request(array('REQUEST_URI' => '/'));
         $this->assertType('DefaultController', $this->router->route($request));
     }

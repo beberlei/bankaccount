@@ -10,7 +10,7 @@ if (PHP_SAPI == 'cli') {
 $request  = new Request($_SERVER, $_GET, $_POST, $_COOKIE, $_FILES, $_ENV);
 $response = new Response;
 $front    = new FrontController($request, $response);
-$router   = new Router;
+$router   = new Router(new ControllerFactory);
 
 $router->addRoute('/', 'DefaultController');
 
