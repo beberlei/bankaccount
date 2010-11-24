@@ -1,8 +1,9 @@
 <?php
 require __DIR__ . '/../src/autoload.php';
 
-// Set REQUEST_URI to / when run from CLI.
-if (!isset($_SERVER['REQUEST_URI'])) {
+// Set some super-global variables for demo purposes.
+if (PHP_SAPI == 'cli') {
+    $_GET['id']             = 1;
     $_SERVER['REQUEST_URI'] = '/';
 }
 
@@ -13,5 +14,9 @@ $router   = new Router;
 
 $router->addRoute('/', 'DefaultController');
 
+Registry::getInstance()->register(
+  'pdo', new PDO('sqlite:' . __DIR__ . '/bankaccount.db')
+);
+
 $view = $front->dispatch($router);
-$view->render();
+print $view->render();

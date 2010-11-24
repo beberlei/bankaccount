@@ -1,19 +1,22 @@
 <?php
+require_once 'fixture/TestController.php';
+require_once 'fixture/TestView.php';
+
 class FrontControllerTest extends PHPUnit_Framework_TestCase
 {
     /**
      * @covers FrontController::__construct
      * @covers FrontController::dispatch
      */
-    public function testDefaultViewIsSelectedForDocumentRoot()
+    public function testDispatchingWorksCorrectly()
     {
         $request  = new Request(array('REQUEST_URI' => '/'));
         $response = new Response;
         $front    = new FrontController($request, $response);
         $router   = new Router;
 
-        $router->addRoute('/', 'DefaultController');
+        $router->addRoute('/', 'TestController');
 
-        $this->assertType('DefaultView', $front->dispatch($router));
+        $this->assertType('TestView', $front->dispatch($router));
     }
 }
