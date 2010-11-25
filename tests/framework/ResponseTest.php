@@ -38,6 +38,7 @@ class ResponseTest extends PHPUnit_Framework_TestCase
 
     /**
      * @covers  Response::setData
+     * @covers  Response::getData
      * @depends testNoDataIsInitiallySet
      */
     public function testSettingDataWorks(Response $response)
