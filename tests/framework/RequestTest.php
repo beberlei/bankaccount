@@ -18,7 +18,7 @@ class RequestTest extends PHPUnit_Framework_TestCase
     public function testExceptionWhenRequestUriIsNotSet()
     {
         $request = new Request;
-        $uri = $request->server('REQUEST_URI');
+        $request->server('REQUEST_URI');
     }
 
     /**
@@ -28,6 +28,6 @@ class RequestTest extends PHPUnit_Framework_TestCase
     public function testExceptionWhenIllegalVariableTypeIsRequested()
     {
         $request = new Request;
-        $bar = $request->foo('bar');
+        $request->foo('bar');
     }
 }
