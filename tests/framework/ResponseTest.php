@@ -31,7 +31,7 @@ class ResponseTest extends PHPUnit_Framework_TestCase
     public function testNoDataIsInitiallySet()
     {
         $response = new Response;
-        $this->assertEmpty($response->getData());
+        $this->assertAttributeEmpty('data', $response);
 
         return $response;
     }
@@ -44,8 +44,6 @@ class ResponseTest extends PHPUnit_Framework_TestCase
     {
         $response->setData('foo', 'bar');
 
-        $data = $response->getData();
-
-        $this->assertEquals('bar', $data['foo']);
+        $this->assertEquals('bar', $response->getData('foo'));
     }
 }

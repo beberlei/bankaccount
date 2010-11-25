@@ -9,18 +9,18 @@ class Response
         $this->headers[] = $header;
     }
 
-    public function setData($key, $value)
-    {
-        $this->data[$key] = $value;
-    }
-
     public function getHeaders()
     {
         return $this->headers;
     }
 
-    public function getData()
+    public function setData($key, $value)
     {
-        return $this->data;
+        $this->data[$key] = $value;
+    }
+
+    public function getData($key)
+    {
+        return $this->data[$key];
     }
 }
