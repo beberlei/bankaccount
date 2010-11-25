@@ -3,7 +3,7 @@ class Registry
 {
     private static $uniqueInstance = NULL;
     protected $objects = array();
- 
+
     protected function __construct()
     {
     }
@@ -13,13 +13,13 @@ class Registry
     {
     }
     // @codeCoverageIgnoreEnd
- 
+
     public static function getInstance()
     {
         if (self::$uniqueInstance === NULL) {
             self::$uniqueInstance = new Registry;
         }
- 
+
         return self::$uniqueInstance;
     }
 
