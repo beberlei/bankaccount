@@ -8,7 +8,7 @@ class RequestTest extends PHPUnit_Framework_TestCase
     public function testRequestUri()
     {
         $request = new Request(array('REQUEST_URI' => '/'));
-        $this->assertEquals('/', $request->server('REQUEST_URI'));
+        $this->assertEquals('/', $request->getServer('REQUEST_URI'));
     }
 
     /**
@@ -18,7 +18,7 @@ class RequestTest extends PHPUnit_Framework_TestCase
     public function testExceptionWhenRequestUriIsNotSet()
     {
         $request = new Request;
-        $request->server('REQUEST_URI');
+        $request->getServer('REQUEST_URI');
     }
 
     /**
@@ -28,6 +28,6 @@ class RequestTest extends PHPUnit_Framework_TestCase
     public function testExceptionWhenIllegalVariableTypeIsRequested()
     {
         $request = new Request;
-        $request->foo('bar');
+        $request->getFoo('bar');
     }
 }

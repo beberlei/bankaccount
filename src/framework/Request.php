@@ -1,5 +1,5 @@
 <?php
-class Request
+class Request extends HashMap
 {
     protected $data;
 
@@ -10,16 +10,18 @@ class Request
                                 array $files  = array(),
                                 array $env    = array())
     {
-        $this->data['server'] = $server;
-        $this->data['get']    = $get;
-        $this->data['post']   = $post;
-        $this->data['cookie'] = $cookie;
-        $this->data['files']  = $files;
-        $this->data['env']    = $env;
+        $this->data['Server'] = $server;
+        $this->data['Get']    = $get;
+        $this->data['Post']   = $post;
+        $this->data['Cookie'] = $cookie;
+        $this->data['Files']  = $files;
+        $this->data['Env']    = $env;
     }
 
     public function __call($type, array $arguments)
     {
+        $type = substr($type, 3);
+
         if (!isset($this->data[$type])) {
             throw new BadMethodCallException;
         }

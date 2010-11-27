@@ -16,7 +16,7 @@ class Router
 
     public function route(Request $request)
     {
-        $uri = $request->server('REQUEST_URI');
+        $uri = $request->getServer('REQUEST_URI');
 
         if (isset($this->map[$uri])) {
             return $this->factory->getController($this->map[$uri]);

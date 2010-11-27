@@ -10,7 +10,7 @@ class BankAccountController extends Controller
 
     public function execute(Request $request, Response $response)
     {
-        $ba = $this->mapper->findById($request->get('id'));
+        $ba = $this->mapper->findById($request->getGet('id'));
 
         $response->set('balance', $ba->getBalance());
 
