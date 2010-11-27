@@ -24,7 +24,10 @@ class RouterTest extends PHPUnit_Framework_TestCase
         Registry::getInstance()->register('BankAccountMapper', $mapper);
 
         $request = new Request(array('REQUEST_URI' => '/bankaccount/'));
-        $this->assertType('BankAccountController', $this->router->route($request));
+
+        $this->assertType(
+          'BankAccountController', $this->router->route($request)
+        );
     }
 
     /**
