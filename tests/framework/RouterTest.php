@@ -9,13 +9,13 @@ class RouterTest extends PHPUnit_Framework_TestCase
     protected function setUp()
     {
         $this->router = new Router(new ControllerFactory);
-        $this->router->addRoute('/', 'DefaultController');
+        $this->router->addRoute('/bankaccount/', 'BankAccountController');
     }
 
     /**
      * @covers Router::route
      */
-    public function testDefaultControllerIsSelectedForDocumentRoot()
+    public function testBankAccountControllerIsSelectedForDocumentRoot()
     {
         $mapper = $this->getMockBuilder('BankAccountMapper')
                        ->disableOriginalConstructor()
@@ -23,8 +23,8 @@ class RouterTest extends PHPUnit_Framework_TestCase
 
         Registry::getInstance()->register('BankAccountMapper', $mapper);
 
-        $request = new Request(array('REQUEST_URI' => '/'));
-        $this->assertType('DefaultController', $this->router->route($request));
+        $request = new Request(array('REQUEST_URI' => '/bankaccount/'));
+        $this->assertType('BankAccountController', $this->router->route($request));
     }
 
     /**

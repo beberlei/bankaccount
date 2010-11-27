@@ -4,8 +4,8 @@ class ControllerFactory
     public function getController($name)
     {
         switch ($name) {
-            case 'DefaultController': {
-                return new DefaultController(
+            case 'BankAccountController': {
+                return new BankAccountController(
                   Registry::getInstance()->getObject('BankAccountMapper')
                 );
             }

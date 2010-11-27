@@ -1,5 +1,5 @@
 <?php
-class DefaultController extends Controller
+class BankAccountController extends Controller
 {
     protected $mapper;
 
@@ -14,6 +14,6 @@ class DefaultController extends Controller
 
         $response->setData('balance', $ba->getBalance());
 
-        return 'DefaultView';
+        return 'BankAccountView';
     }
 }

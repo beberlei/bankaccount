@@ -1,11 +1,11 @@
 <?php
-class DefaultControllerTest extends PHPUnit_Framework_TestCase
+class BankAccountControllerTest extends PHPUnit_Framework_TestCase
 {
     protected $controller;
     protected $mapper;
 
     /**
-     * @covers DefaultController::__construct
+     * @covers BankAccountController::__construct
      */
     protected function setUp()
     {
@@ -13,11 +13,11 @@ class DefaultControllerTest extends PHPUnit_Framework_TestCase
                              ->disableOriginalConstructor()
                              ->getMock();
 
-        $this->controller = new DefaultController($this->mapper);
+        $this->controller = new BankAccountController($this->mapper);
     }
 
     /**
-     * @covers DefaultController::execute
+     * @covers BankAccountController::execute
      */
     public function testIsExecutedCorrectly()
     {
@@ -30,7 +30,7 @@ class DefaultControllerTest extends PHPUnit_Framework_TestCase
 
         $view = $this->controller->execute($request, $response);
 
-        $this->assertEquals('DefaultView', $view);
+        $this->assertEquals('BankAccountView', $view);
         $this->assertEquals(0, $response->getData('balance'));
     }
 }

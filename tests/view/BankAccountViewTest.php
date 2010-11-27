@@ -1,8 +1,8 @@
 <?php
-class DefaultViewTest extends PHPUnit_Framework_TestCase
+class BankAccountViewTest extends PHPUnit_Framework_TestCase
 {
     /**
-     * @covers DefaultView::render
+     * @covers BankAccountView::render
      */
     public function testIsRenderedCorrectly()
     {
@@ -11,7 +11,7 @@ class DefaultViewTest extends PHPUnit_Framework_TestCase
         $response = new Response;
         $response->setData('balance', 0);
 
-        $view = new DefaultView($request, $response);
+        $view = new BankAccountView($request, $response);
 
         $this->assertEquals(
           "The balance of bank account #1 is 0.00.\n", $view->render()

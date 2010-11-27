@@ -1,5 +1,5 @@
 <?php
-class DefaultView extends View
+class BankAccountView extends View
 {
     public function render()
     {
