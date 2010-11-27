@@ -1,8 +1,7 @@
 <?php
-class Response
+class Response extends HashMap
 {
     protected $headers = array();
-    protected $data = array();
 
     public function addHeader($header)
     {
@@ -12,15 +11,5 @@ class Response
     public function getHeaders()
     {
         return $this->headers;
-    }
-
-    public function setData($key, $value)
-    {
-        $this->data[$key] = $value;
-    }
-
-    public function getData($key)
-    {
-        return $this->data[$key];
     }
 }

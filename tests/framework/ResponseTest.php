@@ -24,27 +24,4 @@ class ResponseTest extends PHPUnit_Framework_TestCase
           'HTTP/1.0 404 Not Found', $response->getHeaders()
         );
     }
-
-    /**
-     * @covers Response::getData
-     */
-    public function testNoDataIsInitiallySet()
-    {
-        $response = new Response;
-        $this->assertAttributeEmpty('data', $response);
-
-        return $response;
-    }
-
-    /**
-     * @covers  Response::setData
-     * @covers  Response::getData
-     * @depends testNoDataIsInitiallySet
-     */
-    public function testSettingDataWorks(Response $response)
-    {
-        $response->setData('foo', 'bar');
-
-        $this->assertEquals('bar', $response->getData('foo'));
-    }
 }

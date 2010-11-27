@@ -9,7 +9,7 @@ class BankAccountViewTest extends PHPUnit_Framework_TestCase
         $request = new Request(array(), array('id' => 1));
 
         $response = new Response;
-        $response->setData('balance', 0);
+        $response->set('balance', 0);
 
         $view = new BankAccountView($request, $response);
 

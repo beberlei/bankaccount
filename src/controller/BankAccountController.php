@@ -12,7 +12,7 @@ class BankAccountController extends Controller
     {
         $ba = $this->mapper->findById($request->get('id'));
 
-        $response->setData('balance', $ba->getBalance());
+        $response->set('balance', $ba->getBalance());
 
         return 'BankAccountView';
     }

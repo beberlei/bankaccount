@@ -31,6 +31,6 @@ class BankAccountControllerTest extends PHPUnit_Framework_TestCase
         $view = $this->controller->execute($request, $response);
 
         $this->assertEquals('BankAccountView', $view);
-        $this->assertEquals(0, $response->getData('balance'));
+        $this->assertEquals(0, $response->get('balance'));
     }
 }
