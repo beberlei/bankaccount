@@ -12,7 +12,7 @@ $response = new Response;
 $front    = new FrontController($request, $response);
 $router   = new Router(new ControllerFactory);
 
-$router->addRoute('/bankaccount/', 'BankAccountController');
+$router->set('/bankaccount/', 'BankAccountController');
 
 Registry::getInstance()->register(
   'BankAccountMapper',

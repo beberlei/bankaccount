@@ -17,7 +17,7 @@ class FrontControllerTest extends PHPUnit_Framework_TestCase
         $front    = new FrontController($request, $response);
         $router   = new Router(new ControllerFactory);
 
-        $router->addRoute('/', 'TestController');
+        $router->set('/', 'TestController');
 
         $this->assertType('TestView', $front->dispatch($router));
     }

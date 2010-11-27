@@ -3,13 +3,10 @@ class RouterTest extends PHPUnit_Framework_TestCase
 {
     protected $router;
 
-    /**
-     * @covers Router::addRoute
-     */
     protected function setUp()
     {
         $this->router = new Router(new ControllerFactory);
-        $this->router->addRoute('/bankaccount/', 'BankAccountController');
+        $this->router->set('/bankaccount/', 'BankAccountController');
     }
 
     /**
