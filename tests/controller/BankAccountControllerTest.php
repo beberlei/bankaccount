@@ -18,11 +18,15 @@ class BankAccountControllerTest extends PHPUnit_Framework_TestCase
 
     /**
      * @covers BankAccountController::execute
+     * @covers BankAccountController::executeShow
      */
     public function testIsExecutedCorrectly()
     {
-        $request  = new Request(array(), array('id' => 1));
+        $request  = new Request;
         $response = new Response;
+
+        $request->set('action', 'show');
+        $request->set('id', 1);
 
         $this->mapper->expects($this->any())
                      ->method('findById')
@@ -32,5 +36,21 @@ class BankAccountControllerTest extends PHPUnit_Framework_TestCase
 
         $this->assertEquals('BankAccountView', $view);
         $this->assertEquals(0, $response->get('balance'));
+    }
+
+    /**
+     * @covers            BankAccountController::execute
+     * @expectedException OutOfBoundsException
+     */
+    public function testExceptionWhenActionDoesNotExist()
+    {
+        $request = new Request;
+        $request->set('action', 'does_not_exist');
+
+        $this->mapper->expects($this->any())
+                     ->method('findById')
+                     ->will($this->returnValue(new BankAccount));
+
+        $this->controller->execute($request, new Response);
     }
 }

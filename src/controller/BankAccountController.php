@@ -10,7 +10,22 @@ class BankAccountController extends Controller
 
     public function execute(Request $request, Response $response)
     {
-        $ba = $this->mapper->findById($request->getGet('id'));
+        switch ($request->get('action')) {
+            case 'default':
+            case 'show': {
+                return $this->executeShow($request, $response);
+            }
+            break;
+
+            default: {
+                throw new OutOfBoundsException;
+            }
+        }
+    }
+
+    protected function executeShow(Request $request, Response $response)
+    {
+        $ba = $this->mapper->findById($request->get('id'));
 
         $response->set('balance', $ba->getBalance());
 
