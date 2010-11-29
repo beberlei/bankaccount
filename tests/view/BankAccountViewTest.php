@@ -6,7 +6,8 @@ class BankAccountViewTest extends PHPUnit_Framework_TestCase
      */
     public function testIsRenderedCorrectly()
     {
-        $request = new Request(array(), array('id' => 1));
+        $request = new Request;
+        $request->set('id', 1);
 
         $response = new Response;
         $response->set('balance', 0);

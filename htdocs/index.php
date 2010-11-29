@@ -3,7 +3,6 @@ require __DIR__ . '/../src/autoload.php';
 
 // Set some super-global variables for demo purposes.
 if (PHP_SAPI == 'cli') {
-    $_GET['id']             = 1;
     $_SERVER['REQUEST_URI'] = '/bankaccount/show/id/1';
 }
 
