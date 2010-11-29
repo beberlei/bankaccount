@@ -28,16 +28,16 @@ class BankAccount
         $this->id = $id;
     }
 
-    public function depositMoney($balance)
+    public function depositMoney($amount)
     {
-        $this->setBalance($this->getBalance() + $balance);
+        $this->setBalance($this->getBalance() + $amount);
 
         return $this->getBalance();
     }
 
-    public function withdrawMoney($balance)
+    public function withdrawMoney($amount)
     {
-        $this->setBalance($this->getBalance() - $balance);
+        $this->setBalance($this->getBalance() - $amount);
 
         return $this->getBalance();
     }
