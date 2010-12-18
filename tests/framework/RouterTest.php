@@ -24,7 +24,7 @@ class RouterTest extends PHPUnit_Framework_TestCase
           array('REQUEST_URI' => '/bankaccount/show/id/1')
         );
 
-        $this->assertType(
+        $this->assertInstanceOf(
           'BankAccountController', $this->router->route($request)
         );
 
@@ -41,7 +41,7 @@ class RouterTest extends PHPUnit_Framework_TestCase
           array('REQUEST_URI' => '/bankaccount')
         );
 
-        $this->assertType(
+        $this->assertInstanceOf(
           'BankAccountController', $this->router->route($request)
         );
 

@@ -19,6 +19,6 @@ class FrontControllerTest extends PHPUnit_Framework_TestCase
 
         $router->set('test', 'TestController');
 
-        $this->assertType('TestView', $front->dispatch($router));
+        $this->assertInstanceOf('TestView', $front->dispatch($router));
     }
 }

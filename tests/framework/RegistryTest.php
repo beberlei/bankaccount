@@ -29,7 +29,7 @@ class RegistryTest extends PHPUnit_Framework_TestCase
      */
     public function testObjectCanBeRetrieved()
     {
-        $this->assertType(
+        $this->assertInstanceOf(
           'stdClass', Registry::getInstance()->getObject('foo')
         );
     }
