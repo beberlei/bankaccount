@@ -6,11 +6,10 @@ class HashMapTest extends PHPUnit_Framework_TestCase
      */
     public function testIsInitiallyEmpty()
     {
-        $hashMap = $this->getObjectForTrait('HashMap');
+        $store = new HashMap;
+        $this->assertAttributeEmpty('values', $store);
 
-        $this->assertAttributeEmpty('values', $hashMap);
-
-        return $hashMap;
+        return $store;
     }
 
     /**
@@ -18,10 +17,10 @@ class HashMapTest extends PHPUnit_Framework_TestCase
      * @covers  HashMap::get
      * @depends testIsInitiallyEmpty
      */
-    public function testSettingDataWorks($hashMap)
+    public function testSettingDataWorks(HashMap $store)
     {
-        $hashMap->set('foo', 'bar');
+        $store->set('foo', 'bar');
 
-        $this->assertEquals('bar', $hashMap->get('foo'));
+        $this->assertEquals('bar', $store->get('foo'));
     }
 }

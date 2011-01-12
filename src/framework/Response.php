@@ -1,8 +1,6 @@
 <?php
-class Response
+class Response extends HashMap
 {
-    use HashMap;
-
     protected $headers = array();
 
     public function addHeader($header)

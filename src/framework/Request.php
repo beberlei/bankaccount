@@ -1,8 +1,6 @@
 <?php
-class Request
+class Request extends HashMap
 {
-    use HashMap;
-
     protected $data;
 
     public function __construct(array $server = array(),

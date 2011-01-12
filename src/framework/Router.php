@@ -1,8 +1,6 @@
 <?php
-class Router
+class Router extends HashMap
 {
-    use HashMap;
-
     protected $factory;
 
     public function __construct(ControllerFactory $factory)
