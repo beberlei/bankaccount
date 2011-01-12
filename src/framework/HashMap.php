@@ -1,5 +1,5 @@
 <?php
-class HashMap
+trait HashMap
 {
     protected $values = array();
 
