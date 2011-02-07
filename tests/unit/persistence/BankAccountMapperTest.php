@@ -45,9 +45,12 @@ class BankAccountMapperTest extends PHPUnit_Extensions_Database_TestCase
     public function testBankAccountCanBeFoundById()
     {
         $ba = $this->mapper->findById(1);
-
         $this->assertEquals(1.0, $ba->getBalance());
-        $this->assertEquals(1, $ba->getId());
+
+        $ba = $this->mapper->findById(2);
+        $this->assertEquals(2.0, $ba->getBalance());
+
+        $this->assertSame($ba, $this->mapper->findById(2));
     }
 
     /**
@@ -93,6 +96,17 @@ class BankAccountMapperTest extends PHPUnit_Extensions_Database_TestCase
     }
 
     /**
+     * @covers            BankAccountMapper::update
+     * @covers            MapperException
+     * @expectedException MapperException
+     */
+    public function testBankAccountThatDoesNotExistCannotBeUpdated()
+    {
+        $ba = new BankAccount;
+        $this->mapper->update($ba);
+    }
+
+    /**
      * @covers BankAccountMapper::delete
      */
     public function testBankAccountCanBeDeleted()
@@ -107,5 +121,16 @@ class BankAccountMapperTest extends PHPUnit_Extensions_Database_TestCase
           ),
           $this->getConnection()->createDataSet()
         );
+    }
+
+    /**
+     * @covers            BankAccountMapper::delete
+     * @covers            MapperException
+     * @expectedException MapperException
+     */
+    public function testBankAccountThatDoesNotExistCannotBeDeleted()
+    {
+        $ba = new BankAccount;
+        $this->mapper->delete($ba);
     }
 }
