@@ -5,14 +5,20 @@ class RouterTest extends PHPUnit_Framework_TestCase
 
     protected function setUp()
     {
-        $this->router = new Router(new ControllerFactory);
-        $this->router->set('bankaccount', 'BankAccountController');
-
         $mapper = $this->getMockBuilder('BankAccountMapper')
                        ->disableOriginalConstructor()
                        ->getMock();
 
-        Registry::getInstance()->register('BankAccountMapper', $mapper);
+        $mapperFactory = $this->getMockBuilder('MapperFactory')
+                              ->disableOriginalConstructor()
+                              ->getMock();
+
+        $mapperFactory->expects($this->any())
+                      ->method('getMapper')
+                      ->will($this->returnValue($mapper));
+
+        $this->router = new Router(new ControllerFactory($mapperFactory));
+        $this->router->set('bankaccount', 'BankAccountController');
     }
 
     /**
