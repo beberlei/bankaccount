@@ -21,12 +21,8 @@ class Router
             throw new RuntimeException;
         }
 
-        $action = array_shift($parts);
-
-        if (!empty($action)) {
-            $request->set('action', $action);
-        } else {
-            $request->set('action', 'default');
+        if (isset($parts[0]) && $parts[0] == '') {
+            array_shift($parts);
         }
 
         if (count($parts) % 2 != 0) {

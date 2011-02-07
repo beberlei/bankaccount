@@ -7,8 +7,7 @@ class BankAccountListView extends View
 
         foreach ($this->response->get('ids') as $id) {
             $buffer .= sprintf(
-              '<li><a href="%s/show/id/%d">Bank Account #%d</a></li>',
-              $this->request->getServer('REQUEST_URI'),
+              '<li><a href="/bankaccount/id/%d">Bank Account #%d</a></li>',
               $id,
               $id
             );

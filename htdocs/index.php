@@ -3,7 +3,7 @@ require __DIR__ . '/../src/autoload.php';
 
 // Set some super-global variables for demo purposes.
 if (PHP_SAPI == 'cli') {
-    $_SERVER['REQUEST_URI'] = '/bankaccount/show/id/1';
+    $_SERVER['REQUEST_URI'] = '/bankaccount/id/1';
 }
 
 $request  = new Request($_SERVER, $_GET, $_POST, $_COOKIE, $_FILES, $_ENV);
@@ -18,7 +18,8 @@ $mapperFactory = new MapperFactory(
 $controllerFactory = new ControllerFactory($mapperFactory);
 
 $router = new Router($controllerFactory);
-$router->set('bankaccount', 'BankAccountController');
+$router->set('bankaccount',  'BankAccountController');
+$router->set('bankaccounts', 'BankAccountListController');
 
 $view = $frontController->dispatch($router);
 print $view->render();

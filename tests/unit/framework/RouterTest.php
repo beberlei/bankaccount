@@ -24,34 +24,17 @@ class RouterTest extends PHPUnit_Framework_TestCase
     /**
      * @covers Router::route
      */
-    public function testCorrectControllerIsSelectedWithAction()
+    public function testCorrectControllerIsSelected()
     {
         $request = new Request(
-          array('REQUEST_URI' => '/bankaccount/show/id/1')
+          array('REQUEST_URI' => '/bankaccount/id/1')
         );
 
         $this->assertInstanceOf(
           'BankAccountController', $this->router->route($request)
         );
 
-        $this->assertEquals('show', $request->get('action'));
         $this->assertEquals(1, $request->get('id'));
-    }
-
-    /**
-     * @covers Router::route
-     */
-    public function testCorrectControllerIsSelectedWithDefaultAction()
-    {
-        $request = new Request(
-          array('REQUEST_URI' => '/bankaccount')
-        );
-
-        $this->assertInstanceOf(
-          'BankAccountController', $this->router->route($request)
-        );
-
-        $this->assertEquals('default', $request->get('action'));
     }
 
     /**
@@ -70,7 +53,7 @@ class RouterTest extends PHPUnit_Framework_TestCase
      */
     public function testExceptionWhenSomethingIsWrongWithTheValues()
     {
-        $request = new Request(array('REQUEST_URI' => '/bankaccount/show/id'));
+        $request = new Request(array('REQUEST_URI' => '/bankaccount/id'));
         $this->router->route($request);
     }
 }

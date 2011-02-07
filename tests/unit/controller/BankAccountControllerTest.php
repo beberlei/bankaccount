@@ -18,14 +18,12 @@ class BankAccountControllerTest extends PHPUnit_Framework_TestCase
 
     /**
      * @covers BankAccountController::execute
-     * @covers BankAccountController::executeShow
      */
     public function testReturnsBankAccountViewWhenBankAccountIsSpecified()
     {
         $request  = new Request;
         $response = new Response;
 
-        $request->set('action', 'show');
         $request->set('id', 1);
 
         $this->mapper->expects($this->any())
@@ -39,15 +37,14 @@ class BankAccountControllerTest extends PHPUnit_Framework_TestCase
     }
 
     /**
-     * @covers BankAccountController::execute
-     * @covers BankAccountController::executeShow
+     * @covers            BankAccountController::execute
+     * @covers            ControllerException
+     * @expectedException ControllerException
      */
-    public function testReturnsBankAccountListViewWhenBankAccountIsNotSpecified()
+    public function testExceptionIsRaisedWhenBankAccountIsNotSpecified()
     {
         $request  = new Request;
         $response = new Response;
-
-        $request->set('action', 'default');
 
         $this->mapper->expects($this->any())
                      ->method('getAllIds')
@@ -57,21 +54,5 @@ class BankAccountControllerTest extends PHPUnit_Framework_TestCase
 
         $this->assertEquals('BankAccountListView', $view);
         $this->assertEquals(array(1), $response->get('ids'));
-    }
-
-    /**
-     * @covers            BankAccountController::execute
-     * @expectedException OutOfBoundsException
-     */
-    public function testExceptionWhenActionDoesNotExist()
-    {
-        $request = new Request;
-        $request->set('action', 'does_not_exist');
-
-        $this->mapper->expects($this->any())
-                     ->method('findById')
-                     ->will($this->returnValue(new BankAccount));
-
-        $this->controller->execute($request, new Response);
     }
 }
