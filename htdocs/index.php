@@ -8,17 +8,17 @@ if (PHP_SAPI == 'cli') {
 
 $request  = new Request($_SERVER, $_GET, $_POST, $_COOKIE, $_FILES, $_ENV);
 $response = new Response;
-$front    = new FrontController($request, $response);
-$router   = new Router(new ControllerFactory);
 
-$router->set('bankaccount', 'BankAccountController');
+$frontController = new FrontController($request, $response);
 
-Registry::getInstance()->register(
-  'BankAccountMapper',
-  new BankAccountMapper(
-    new PDO('sqlite:' . __DIR__ . '/bankaccount.db')
-  )
+$mapperFactory = new MapperFactory(
+  new PDO('sqlite:' . __DIR__ . '/bankaccount.db')
 );
 
-$view = $front->dispatch($router);
+$controllerFactory = new ControllerFactory($mapperFactory);
+
+$router = new Router($controllerFactory);
+$router->set('bankaccount', 'BankAccountController');
+
+$view = $frontController->dispatch($router);
 print $view->render();

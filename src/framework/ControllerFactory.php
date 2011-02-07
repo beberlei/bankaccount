@@ -1,12 +1,19 @@
 <?php
 class ControllerFactory
 {
+    protected $mapperFactory;
+
+    public function __construct(MapperFactory $mapperFactory)
+    {
+        $this->mapperFactory = $mapperFactory;
+    }
+
     public function getController($name)
     {
         switch ($name) {
             case 'BankAccountController': {
                 return new BankAccountController(
-                  Registry::getInstance()->getObject('BankAccountMapper')
+                  $this->mapperFactory->getMapper('BankAccountMapper')
                 );
             }
             break;
