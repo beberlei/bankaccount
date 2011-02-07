@@ -12,7 +12,7 @@ $response = new Response;
 $frontController = new FrontController($request, $response);
 
 $mapperFactory = new MapperFactory(
-  new PDO('sqlite:' . __DIR__ . '/bankaccount.db')
+  new PDO('sqlite:' . dirname(__DIR__) . '/data/bankaccount.db')
 );
 
 $controllerFactory = new ControllerFactory($mapperFactory);
