@@ -30,7 +30,7 @@ class BankAccountController extends Controller
         }
 
         catch (OutOfBoundsException $id) {
-            $response->set('ids', $this->mapper->all());
+            $response->set('ids', $this->mapper->getAllIds());
 
             return 'BankAccountListView';
         }

@@ -8,7 +8,7 @@ class BankAccountMapper
         $this->db = $db;
     }
 
-    public function all()
+    public function getAllIds()
     {
         $result = array();
 
