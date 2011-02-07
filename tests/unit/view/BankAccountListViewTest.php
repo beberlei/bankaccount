@@ -14,7 +14,7 @@ class BankAccountListViewTest extends PHPUnit_Framework_TestCase
         $view = new BankAccountListView($request, $response);
 
         $this->assertEquals(
-          '<ul><li><a href="/bankaccount/show/id/1">Bank Account #1</a></li></ul>',
+          '<ul><li><a href="/bankaccount/id/1">Bank Account #1</a></li></ul>',
           $view->render()
         );
     }

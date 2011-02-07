@@ -28,8 +28,16 @@ class BankAccountMapper
           )
         );
 
+        $balance = $result->fetchColumn();
+
+        if (!$balance) {
+            throw new OutOfBoundsException(
+              sprintf('No bank account with id #%d exists.', $id)
+            );
+        }
+
         $ba = new BankAccount;
-        $ba->setBalance($result->fetchColumn());
+        $ba->setBalance($balance);
         $ba->setId($id);
 
         return $ba;
