@@ -5,7 +5,7 @@ class WebTest extends PHPUnit_Extensions_SeleniumTestCase
     {
         $this->setBrowserUrl('http://localhost');
     }
- 
+
     public function test()
     {
         $this->open('/bankaccount');
