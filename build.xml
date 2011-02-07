@@ -90,7 +90,7 @@
  <!-- Generate API documentation -->
  <target name="phpdoc">
   <exec executable="phpdoc">
-   <arg line="-d ${source} -t ${basedir}/build/api" />
+   <arg line="-d ${source} -t ${basedir}/build/api --ignore autoload.php" />
   </exec>
  </target>
 
