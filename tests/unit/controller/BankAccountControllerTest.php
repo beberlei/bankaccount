@@ -46,13 +46,25 @@ class BankAccountControllerTest extends PHPUnit_Framework_TestCase
         $request  = new Request;
         $response = new Response;
 
+        $this->controller->execute($request, $response);
+    }
+
+    /**
+     * @covers            BankAccountController::execute
+     * @covers            ControllerException
+     * @expectedException ControllerException
+     */
+    public function testExceptionIsRaisedWhenBankAccountIsNotFound()
+    {
+        $request  = new Request;
+        $response = new Response;
+
+        $request->set('id', 3);
+
         $this->mapper->expects($this->any())
-                     ->method('getAllIds')
-                     ->will($this->returnValue(array(1)));
+                     ->method('findById')
+                     ->will($this->throwException(new OutOfBoundsException));
 
-        $view = $this->controller->execute($request, $response);
-
-        $this->assertEquals('BankAccountListView', $view);
-        $this->assertEquals(array(1), $response->get('ids'));
+        $this->controller->execute($request, $response);
     }
 }

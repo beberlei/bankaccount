@@ -51,6 +51,15 @@ class BankAccountMapperTest extends PHPUnit_Extensions_Database_TestCase
     }
 
     /**
+     * @covers            BankAccountMapper::findById
+     * @expectedException OutOfBoundsException
+     */
+    public function testExceptionIsRaisedWhenBankAccountCannotBeFoundById()
+    {
+        $this->mapper->findById(3);
+    }
+
+    /**
      * @covers BankAccountMapper::insert
      */
     public function testBankAccountCanBeInserted()
