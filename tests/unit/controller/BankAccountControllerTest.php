@@ -50,7 +50,7 @@ class BankAccountControllerTest extends PHPUnit_Framework_TestCase
         $request->set('action', 'default');
 
         $this->mapper->expects($this->any())
-                     ->method('all')
+                     ->method('getAllIds')
                      ->will($this->returnValue(array(1)));
 
         $view = $this->controller->execute($request, $response);
