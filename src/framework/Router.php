@@ -31,9 +31,10 @@ class Router extends HashMap
             throw new RuntimeException;
         }
 
-        $keys = array_keys($parts);
+        $keys  = array_keys($parts);
+        $count = count($keys);
 
-        for ($i = 0; $i < count($keys); $i += 2) {
+        for ($i = 0; $i < $count; $i += 2) {
             $request->set($parts[$keys[$i]], $parts[$keys[$i+1]]);
         }
 
