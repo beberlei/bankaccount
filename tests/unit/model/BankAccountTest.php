@@ -57,28 +57,6 @@ class BankAccountTest extends PHPUnit_Framework_TestCase
     }
 
     /**
-     * @covers BankAccount::getId
-     */
-    public function testIdIsInitiallyNull()
-    {
-        $ba = new BankAccount;
-        $this->assertEquals(NULL, $ba->getId());
-
-        return $ba;
-    }
-
-    /**
-     * @covers  BankAccount::setId
-     * @depends testIdIsInitiallyNull
-     */
-    public function testIdCanBeSet(BankAccount $ba)
-    {
-        $ba->setId(1);
-
-        $this->assertEquals(1, $ba->getId());
-    }
-
-    /**
      * @depends testBalanceIsInitiallyZero
      * @covers  BankAccount::depositMoney
      */
