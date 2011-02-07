@@ -10,6 +10,10 @@ trait HashMap
 
     public function get($key)
     {
+        if (!isset($this->values[$key])) {
+            throw new OutOfBoundsException;
+        }
+
         return $this->values[$key];
     }
 }

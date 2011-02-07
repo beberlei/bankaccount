@@ -30,6 +30,14 @@ class BankAccountMapperTest extends PHPUnit_Extensions_Database_TestCase
     }
 
     /**
+     * @covers BankAccountMapper::all
+     */
+    public function testListOfBankAccountIdsCanBeRetrieved()
+    {
+        $this->assertEquals(array(1, 2), $this->mapper->all());
+    }
+
+    /**
      * @covers BankAccountMapper::findById
      */
     public function testBankAccountCanBeFoundById()
