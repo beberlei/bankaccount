@@ -6,7 +6,7 @@ class BankAccountListViewTest extends PHPUnit_Framework_TestCase
      */
     public function testIsRenderedCorrectly()
     {
-        $request = new Request(array('REQUEST_URI' => '/bankaccount/'));
+        $request = new Request(array('REQUEST_URI' => '/bankaccount'));
 
         $response = new Response;
         $response->set('ids', array(1));
