@@ -78,6 +78,19 @@ class BankAccountMapperTest extends PHPUnit_Extensions_Database_TestCase
     }
 
     /**
+     * @covers            BankAccountMapper::insert
+     * @covers            MapperException
+     * @expectedException MapperException
+     */
+    public function testBankAccountCannotBeInsertedTwice()
+    {
+        $ba = new BankAccount;
+
+        $this->mapper->insert($ba);
+        $this->mapper->insert($ba);
+    }
+
+    /**
      * @covers BankAccountMapper::update
      */
     public function testBankAccountCanBeUpdated()

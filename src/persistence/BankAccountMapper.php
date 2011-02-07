@@ -58,6 +58,10 @@ class BankAccountMapper
 
     public function insert(BankAccount $ba)
     {
+        if (isset($this->identityMap[$ba])) {
+            throw new MapperException('Object has an ID, cannot insert.');
+        }
+
         $this->db->exec(
           sprintf(
             'INSERT INTO bankaccount (balance) VALUES(%f);',
