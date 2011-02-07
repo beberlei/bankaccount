@@ -20,7 +20,7 @@ class BankAccountControllerTest extends PHPUnit_Framework_TestCase
      * @covers BankAccountController::execute
      * @covers BankAccountController::executeShow
      */
-    public function testIsExecutedCorrectly()
+    public function testReturnsBankAccountViewWhenBankAccountIsSpecified()
     {
         $request  = new Request;
         $response = new Response;
@@ -36,6 +36,27 @@ class BankAccountControllerTest extends PHPUnit_Framework_TestCase
 
         $this->assertEquals('BankAccountView', $view);
         $this->assertEquals(0, $response->get('balance'));
+    }
+
+    /**
+     * @covers BankAccountController::execute
+     * @covers BankAccountController::executeShow
+     */
+    public function testReturnsBankAccountListViewWhenBankAccountIsNotSpecified()
+    {
+        $request  = new Request;
+        $response = new Response;
+
+        $request->set('action', 'default');
+
+        $this->mapper->expects($this->any())
+                     ->method('all')
+                     ->will($this->returnValue(array(1)));
+
+        $view = $this->controller->execute($request, $response);
+
+        $this->assertEquals('BankAccountListView', $view);
+        $this->assertEquals(array(1), $response->get('ids'));
     }
 
     /**
