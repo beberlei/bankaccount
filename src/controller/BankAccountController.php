@@ -25,7 +25,17 @@ class BankAccountController extends Controller
 
     protected function executeShow(Request $request, Response $response)
     {
-        $ba = $this->mapper->findById($request->get('id'));
+        try {
+            $id = $request->get('id');
+        }
+
+        catch (OutOfBoundsException $id) {
+            $response->set('ids', $this->mapper->all());
+
+            return 'BankAccountListView';
+        }
+
+        $ba = $this->mapper->findById($id);
 
         $response->set('balance', $ba->getBalance());
 
