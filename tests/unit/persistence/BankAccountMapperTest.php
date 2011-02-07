@@ -12,7 +12,9 @@ class BankAccountMapperTest extends PHPUnit_Extensions_Database_TestCase
         $this->db     = new PDO('sqlite::memory:');
         $this->mapper = new BankAccountMapper($this->db);
 
-        $this->db->exec(file_get_contents(__DIR__ . '/../../../sql/sqlite.sql'));
+        $this->db->exec(
+          file_get_contents(__DIR__ . '/../../../database/bankaccount.sql')
+        );
 
         parent::setUp();
     }
