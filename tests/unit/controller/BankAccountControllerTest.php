@@ -46,13 +46,6 @@ class BankAccountControllerTest extends PHPUnit_Framework_TestCase
         $request  = new Request;
         $response = new Response;
 
-        $this->mapper->expects($this->any())
-                     ->method('getAllIds')
-                     ->will($this->returnValue(array(1)));
-
-        $view = $this->controller->execute($request, $response);
-
-        $this->assertEquals('BankAccountListView', $view);
-        $this->assertEquals(array(1), $response->get('ids'));
+        $this->controller->execute($request, $response);
     }
 }
