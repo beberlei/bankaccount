@@ -8,6 +8,17 @@ class BankAccountMapper
         $this->db = $db;
     }
 
+    public function all()
+    {
+        $result = array();
+
+        foreach ($this->db->query('SELECT id FROM bankaccount;') as $row) {
+            $result[] = $row['id'];
+        }
+
+        return $result;
+    }
+
     public function findById($id)
     {
         $result = $this->db->query(
