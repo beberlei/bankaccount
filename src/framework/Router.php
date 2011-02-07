@@ -19,8 +19,10 @@ class Router extends HashMap
             throw new RuntimeException;
         }
 
-        if (!empty($parts)) {
-            $request->set('action', array_shift($parts));
+        $action = array_shift($parts);
+
+        if (!empty($action)) {
+            $request->set('action', $action);
         } else {
             $request->set('action', 'default');
         }
