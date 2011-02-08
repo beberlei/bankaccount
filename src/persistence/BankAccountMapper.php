@@ -49,7 +49,10 @@ class BankAccountMapper
         }
 
         $ba = new BankAccount;
-        $ba->setBalance($balance);
+
+        $attribute = new ReflectionProperty($ba, 'balance');
+        $attribute->setAccessible(TRUE);
+        $attribute->setValue($ba, $balance);
 
         $this->identityMap[$ba] = $id;
 
