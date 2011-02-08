@@ -96,7 +96,7 @@ class BankAccountMapperTest extends PHPUnit_Extensions_Database_TestCase
     public function testBankAccountCanBeUpdated()
     {
         $ba = $this->mapper->findById(1);
-        $ba->setBalance(0);
+        $ba->withdrawMoney(1);
 
         $this->mapper->update($ba);
 
