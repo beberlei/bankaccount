@@ -10,13 +10,19 @@ class FrontControllerTest extends PHPUnit_Framework_TestCase
      */
     public function testDispatchingWorksCorrectly()
     {
-        $request         = new Request(array('REQUEST_URI' => '/test/'));
-        $response        = new Response;
-        $frontController = new FrontController($request, $response);
-        $router          = new Router(
-          new ControllerFactory(new MapperFactory(new PDO('sqlite::memory:')))
+        $request  = new Request(array('REQUEST_URI' => '/test/'));
+        $response = new Response;
+
+        $frontController = new FrontController(
+          $request,
+          $response,
+          new ControllerFactory(
+            new MapperFactory(new PDO('sqlite::memory:'))
+          ),
+          new ViewFactory
         );
 
+        $router = new Router;
         $router->set('test', 'TestController');
 
         $this->assertInstanceOf(
