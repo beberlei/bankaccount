@@ -3,23 +3,28 @@ class FrontController
 {
     protected $request;
     protected $response;
+    protected $controllerFactory;
+    protected $viewFactory;
 
-    public function __construct(Request $request, Response $response)
+    public function __construct(Request $request, Response $response, ControllerFactory $controllerFactory, ViewFactory $viewFactory)
     {
-        $this->request  = $request;
-        $this->response = $response;
+        $this->request           = $request;
+        $this->response          = $response;
+        $this->controllerFactory = $controllerFactory;
+        $this->viewFactory       = $viewFactory;
     }
 
     public function dispatch(Router $router)
     {
-        $controller = $router->route($this->request);
+        $controller = $this->controllerFactory->getController(
+          $router->route($this->request)
+        );
 
         $viewName = $controller->execute(
           $this->request, $this->response
         );
 
-        $factory = new ViewFactory;
-        $view    = $factory->getView(
+        $view = $this->viewFactory->getView(
           $viewName, $this->request, $this->response
         );
 

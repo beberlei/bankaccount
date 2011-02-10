@@ -1,13 +1,6 @@
 <?php
 class Router extends HashMap
 {
-    protected $factory;
-
-    public function __construct(ControllerFactory $factory)
-    {
-        $this->factory = $factory;
-    }
-
     public function route(Request $request)
     {
         $parts = explode('/', $request->getServer('REQUEST_URI'));
@@ -34,6 +27,6 @@ class Router extends HashMap
             $request->set($parts[$keys[$i]], $parts[$keys[$i+1]]);
         }
 
-        return $this->factory->getController($this->values[$controller]);
+        return $this->values[$controller];
     }
 }

@@ -9,15 +9,17 @@ if (PHP_SAPI == 'cli') {
 $request  = new Request($_SERVER, $_GET, $_POST, $_COOKIE, $_FILES, $_ENV);
 $response = new Response;
 
-$frontController = new FrontController($request, $response);
-
 $mapperFactory = new MapperFactory(
   new PDO('sqlite:' . dirname(__DIR__) . '/database/bankaccount.db')
 );
 
 $controllerFactory = new ControllerFactory($mapperFactory);
+$viewFactory       = new ViewFactory;
+$frontController   = new FrontController(
+                       $request, $response, $controllerFactory, $viewFactory
+                     );
 
-$router = new Router($controllerFactory);
+$router = new Router;
 $router->set('bankaccount',  'BankAccountController');
 $router->set('bankaccounts', 'BankAccountListController');
 
