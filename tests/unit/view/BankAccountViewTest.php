@@ -1,4 +1,7 @@
 <?php
+/**
+ * @medium
+ */
 class BankAccountViewTest extends PHPUnit_Framework_TestCase
 {
     /**

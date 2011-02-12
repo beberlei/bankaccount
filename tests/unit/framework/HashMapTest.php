@@ -1,4 +1,7 @@
 <?php
+/**
+ * @small
+ */
 class HashMapTest extends PHPUnit_Framework_TestCase
 {
     /**

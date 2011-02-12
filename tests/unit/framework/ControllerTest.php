@@ -1,4 +1,7 @@
 <?php
+/**
+ * @small
+ */
 class ControllerTest extends PHPUnit_Framework_TestCase
 {
     protected $controller;
