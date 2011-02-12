@@ -8,7 +8,7 @@ class WebTest extends PHPUnit_Extensions_SeleniumTestCase
 
     public function test()
     {
-        $this->open('/bankaccount');
+        $this->open('/bankaccounts');
         $this->assertTextPresent('Bank Account #1');
         $this->clickAndWait('link=Bank Account #1');
         $this->assertTextPresent('The balance of bank account #1 is 1.00.');

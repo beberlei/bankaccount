@@ -10,32 +10,23 @@ class BankAccountController extends Controller
 
     public function execute(Request $request, Response $response)
     {
-        switch ($request->get('action')) {
-            case 'default':
-            case 'show': {
-                return $this->executeShow($request, $response);
-            }
-            break;
-
-            default: {
-                throw new OutOfBoundsException;
-            }
-        }
-    }
-
-    protected function executeShow(Request $request, Response $response)
-    {
         try {
             $id = $request->get('id');
         }
 
-        catch (OutOfBoundsException $id) {
-            $response->set('ids', $this->mapper->getAllIds());
-
-            return 'BankAccountListView';
+        catch (OutOfBoundsException $e) {
+            throw new ControllerException('No bank account was specified.');
         }
 
-        $ba = $this->mapper->findById($id);
+        try {
+            $ba = $this->mapper->findById($id);
+        }
+
+        catch (OutOfBoundsException $e) {
+            throw new ControllerException(
+              sprintf('No bank account with id #%d exists.', $id)
+            );
+        }
 
         $response->set('balance', $ba->getBalance());
 
