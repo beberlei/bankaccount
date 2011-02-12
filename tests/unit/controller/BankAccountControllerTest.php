@@ -18,14 +18,12 @@ class BankAccountControllerTest extends PHPUnit_Framework_TestCase
 
     /**
      * @covers BankAccountController::execute
-     * @covers BankAccountController::executeShow
      */
     public function testReturnsBankAccountViewWhenBankAccountIsSpecified()
     {
         $request  = new Request;
         $response = new Response;
 
-        $request->set('action', 'show');
         $request->set('id', 1);
 
         $this->mapper->expects($this->any())
@@ -39,39 +37,34 @@ class BankAccountControllerTest extends PHPUnit_Framework_TestCase
     }
 
     /**
-     * @covers BankAccountController::execute
-     * @covers BankAccountController::executeShow
+     * @covers            BankAccountController::execute
+     * @covers            ControllerException
+     * @expectedException ControllerException
      */
-    public function testReturnsBankAccountListViewWhenBankAccountIsNotSpecified()
+    public function testExceptionIsRaisedWhenBankAccountIsNotSpecified()
     {
         $request  = new Request;
         $response = new Response;
 
-        $request->set('action', 'default');
-
-        $this->mapper->expects($this->any())
-                     ->method('getAllIds')
-                     ->will($this->returnValue(array(1)));
-
-        $view = $this->controller->execute($request, $response);
-
-        $this->assertEquals('BankAccountListView', $view);
-        $this->assertEquals(array(1), $response->get('ids'));
+        $this->controller->execute($request, $response);
     }
 
     /**
      * @covers            BankAccountController::execute
-     * @expectedException OutOfBoundsException
+     * @covers            ControllerException
+     * @expectedException ControllerException
      */
-    public function testExceptionWhenActionDoesNotExist()
+    public function testExceptionIsRaisedWhenBankAccountIsNotFound()
     {
-        $request = new Request;
-        $request->set('action', 'does_not_exist');
+        $request  = new Request;
+        $response = new Response;
+
+        $request->set('id', 3);
 
         $this->mapper->expects($this->any())
                      ->method('findById')
-                     ->will($this->returnValue(new BankAccount));
+                     ->will($this->throwException(new OutOfBoundsException));
 
-        $this->controller->execute($request, new Response);
+        $this->controller->execute($request, $response);
     }
 }

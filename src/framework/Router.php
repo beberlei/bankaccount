@@ -3,13 +3,6 @@ class Router
 {
     use HashMap;
 
-    protected $factory;
-
-    public function __construct(ControllerFactory $factory)
-    {
-        $this->factory = $factory;
-    }
-
     public function route(Request $request)
     {
         $parts = explode('/', $request->getServer('REQUEST_URI'));
@@ -21,12 +14,8 @@ class Router
             throw new RuntimeException;
         }
 
-        $action = array_shift($parts);
-
-        if (!empty($action)) {
-            $request->set('action', $action);
-        } else {
-            $request->set('action', 'default');
+        if (isset($parts[0]) && $parts[0] == '') {
+            array_shift($parts);
         }
 
         if (count($parts) % 2 != 0) {
@@ -40,6 +29,6 @@ class Router
             $request->set($parts[$keys[$i]], $parts[$keys[$i+1]]);
         }
 
-        return $this->factory->getController($this->values[$controller]);
+        return $this->values[$controller];
     }
 }

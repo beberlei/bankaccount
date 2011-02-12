@@ -45,9 +45,21 @@ class BankAccountMapperTest extends PHPUnit_Extensions_Database_TestCase
     public function testBankAccountCanBeFoundById()
     {
         $ba = $this->mapper->findById(1);
-
         $this->assertEquals(1.0, $ba->getBalance());
-        $this->assertEquals(1, $ba->getId());
+
+        $ba = $this->mapper->findById(2);
+        $this->assertEquals(2.0, $ba->getBalance());
+
+        $this->assertSame($ba, $this->mapper->findById(2));
+    }
+
+    /**
+     * @covers            BankAccountMapper::findById
+     * @expectedException OutOfBoundsException
+     */
+    public function testExceptionIsRaisedWhenBankAccountCannotBeFoundById()
+    {
+        $this->mapper->findById(3);
     }
 
     /**
@@ -66,12 +78,25 @@ class BankAccountMapperTest extends PHPUnit_Extensions_Database_TestCase
     }
 
     /**
+     * @covers            BankAccountMapper::insert
+     * @covers            MapperException
+     * @expectedException MapperException
+     */
+    public function testBankAccountCannotBeInsertedTwice()
+    {
+        $ba = new BankAccount;
+
+        $this->mapper->insert($ba);
+        $this->mapper->insert($ba);
+    }
+
+    /**
      * @covers BankAccountMapper::update
      */
     public function testBankAccountCanBeUpdated()
     {
         $ba = $this->mapper->findById(1);
-        $ba->setBalance(0);
+        $ba->withdrawMoney(1);
 
         $this->mapper->update($ba);
 
@@ -81,6 +106,17 @@ class BankAccountMapperTest extends PHPUnit_Extensions_Database_TestCase
           ),
           $this->getConnection()->createDataSet()
         );
+    }
+
+    /**
+     * @covers            BankAccountMapper::update
+     * @covers            MapperException
+     * @expectedException MapperException
+     */
+    public function testBankAccountThatDoesNotExistCannotBeUpdated()
+    {
+        $ba = new BankAccount;
+        $this->mapper->update($ba);
     }
 
     /**
@@ -98,5 +134,16 @@ class BankAccountMapperTest extends PHPUnit_Extensions_Database_TestCase
           ),
           $this->getConnection()->createDataSet()
         );
+    }
+
+    /**
+     * @covers            BankAccountMapper::delete
+     * @covers            MapperException
+     * @expectedException MapperException
+     */
+    public function testBankAccountThatDoesNotExistCannotBeDeleted()
+    {
+        $ba = new BankAccount;
+        $this->mapper->delete($ba);
     }
 }

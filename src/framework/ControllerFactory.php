@@ -18,6 +18,13 @@ class ControllerFactory
             }
             break;
 
+            case 'BankAccountListController': {
+                return new BankAccountListController(
+                  $this->mapperFactory->getMapper('BankAccountMapper')
+                );
+            }
+            break;
+
             default: {
                 return new $name;
             }
