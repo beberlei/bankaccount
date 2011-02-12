@@ -1,4 +1,7 @@
 <?php
+/**
+ * @medium
+ */
 class ViewTest extends PHPUnit_Framework_TestCase
 {
     protected $request;

@@ -1,4 +1,7 @@
 <?php
+/**
+ * @small
+ */
 class MapperFactoryTest extends PHPUnit_Framework_TestCase
 {
     protected $mapperFactory;

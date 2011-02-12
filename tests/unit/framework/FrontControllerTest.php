@@ -2,6 +2,9 @@
 require_once 'fixture/TestController.php';
 require_once 'fixture/TestView.php';
 
+/**
+ * @medium
+ */
 class FrontControllerTest extends PHPUnit_Framework_TestCase
 {
     /**

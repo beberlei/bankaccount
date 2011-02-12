@@ -1,4 +1,7 @@
 <?php
+/**
+ * @medium
+ */
 class BankAccountListControllerTest extends PHPUnit_Framework_TestCase
 {
     protected $controller;
