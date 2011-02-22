@@ -4,4 +4,3 @@ build/coverage
 build/logs
 build/pdepend
 phpunit.xml
-src/autoload.php

@@ -24,7 +24,7 @@
  <!-- Generate autoloader bootstrap script -->
  <target name="phpab">
   <exec executable="phpab">
-   <arg line="-o src/autoload.php src" />
+   <arg line="-o src/autoload.php -t build/autoload.php.in src" />
   </exec>
  </target>
 
