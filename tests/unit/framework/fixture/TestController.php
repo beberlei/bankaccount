@@ -1,5 +1,5 @@
 <?php
-class TestController extends Controller
+class TestController implements Controller
 {
     public function execute(Request $request, Response $response)
     {

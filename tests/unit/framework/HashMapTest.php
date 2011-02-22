@@ -27,4 +27,14 @@ class HashMapTest extends PHPUnit_Framework_TestCase
 
         $this->assertEquals('bar', $hashMap->get('foo'));
     }
+
+    /**
+     * @covers            HashMap::get
+     * @expectedException OutOfBoundsException
+     */
+    public function testExceptionIsRaisedWhenAccessingAnElementThatDoesNotExist()
+    {
+        $store = new HashMap;
+        $store->get('foo');
+    }
 }

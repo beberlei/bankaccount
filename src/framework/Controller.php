@@ -1,5 +1,5 @@
 <?php
-abstract class Controller
+interface Controller
 {
-    abstract public function execute(Request $request, Response $response);
+    public function execute(Request $request, Response $response);
 }

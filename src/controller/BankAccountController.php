@@ -1,5 +1,5 @@
 <?php
-class BankAccountController extends Controller
+class BankAccountController implements Controller
 {
     protected $mapper;
 
