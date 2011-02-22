@@ -1,11 +1,14 @@
 <?php
+/**
+ * @large
+ */
 class WebTest extends PHPUnit_Extensions_SeleniumTestCase
 {
     protected function setUp()
     {
         $this->setBrowserUrl('http://localhost');
     }
- 
+
     public function test()
     {
         $this->open('/bankaccounts');

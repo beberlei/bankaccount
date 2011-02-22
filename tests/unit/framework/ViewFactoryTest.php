@@ -1,4 +1,7 @@
 <?php
+/**
+ * @small
+ */
 class ViewFactoryTest extends PHPUnit_Framework_TestCase
 {
     /**

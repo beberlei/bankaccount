@@ -1,4 +1,7 @@
 <?php
+/**
+ * @small
+ */
 class ControllerFactoryTest extends PHPUnit_Framework_TestCase
 {
     protected $controllerFactory;
