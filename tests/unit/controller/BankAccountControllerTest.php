@@ -1,11 +1,13 @@
 <?php
 /**
- * @medium
+ * @small
  */
 class BankAccountControllerTest extends PHPUnit_Framework_TestCase
 {
     protected $controller;
     protected $mapper;
+    protected $request;
+    protected $response;
 
     /**
      * @covers BankAccountController::__construct
@@ -17,6 +19,14 @@ class BankAccountControllerTest extends PHPUnit_Framework_TestCase
                              ->getMock();
 
         $this->controller = new BankAccountController($this->mapper);
+
+        $this->request = $this->getMockBuilder('Request')
+                              ->disableOriginalConstructor()
+                              ->getMock();
+
+        $this->response = $this->getMockBuilder('Response')
+                               ->disableOriginalConstructor()
+                               ->getMock();
     }
 
     /**
@@ -24,19 +34,23 @@ class BankAccountControllerTest extends PHPUnit_Framework_TestCase
      */
     public function testReturnsBankAccountViewWhenBankAccountIsSpecified()
     {
-        $request  = new Request;
-        $response = new Response;
-
-        $request->set('id', 1);
+        $this->request->expects($this->once())
+                      ->method('get')
+                      ->with($this->equalTo('id'))
+                      ->will($this->returnValue(1));
 
         $this->mapper->expects($this->any())
                      ->method('findById')
                      ->will($this->returnValue(new BankAccount));
 
-        $view = $this->controller->execute($request, $response);
+        $this->response->expects($this->once())
+                       ->method('set')
+                       ->with($this->equalTo('balance'),
+                              $this->equalTo(0));
+
+        $view = $this->controller->execute($this->request, $this->response);
 
         $this->assertEquals('BankAccountView', $view);
-        $this->assertEquals(0, $response->get('balance'));
     }
 
     /**
@@ -46,10 +60,12 @@ class BankAccountControllerTest extends PHPUnit_Framework_TestCase
      */
     public function testExceptionIsRaisedWhenBankAccountIsNotSpecified()
     {
-        $request  = new Request;
-        $response = new Response;
+        $this->request->expects($this->once())
+                      ->method('get')
+                      ->with($this->equalTo('id'))
+                      ->will($this->throwException(new OutOfBoundsException));
 
-        $this->controller->execute($request, $response);
+        $this->controller->execute($this->request, $this->response);
     }
 
     /**
@@ -59,15 +75,15 @@ class BankAccountControllerTest extends PHPUnit_Framework_TestCase
      */
     public function testExceptionIsRaisedWhenBankAccountIsNotFound()
     {
-        $request  = new Request;
-        $response = new Response;
-
-        $request->set('id', 3);
+        $this->request->expects($this->once())
+                      ->method('get')
+                      ->with($this->equalTo('id'))
+                      ->will($this->returnValue(3));
 
         $this->mapper->expects($this->any())
                      ->method('findById')
                      ->will($this->throwException(new OutOfBoundsException));
 
-        $this->controller->execute($request, $response);
+        $this->controller->execute($this->request, $this->response);
     }
 }

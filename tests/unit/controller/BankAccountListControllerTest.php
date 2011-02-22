@@ -1,11 +1,13 @@
 <?php
 /**
- * @medium
+ * @small
  */
 class BankAccountListControllerTest extends PHPUnit_Framework_TestCase
 {
     protected $controller;
     protected $mapper;
+    protected $request;
+    protected $response;
 
     /**
      * @covers BankAccountController::__construct
@@ -17,6 +19,14 @@ class BankAccountListControllerTest extends PHPUnit_Framework_TestCase
                              ->getMock();
 
         $this->controller = new BankAccountListController($this->mapper);
+
+        $this->request = $this->getMockBuilder('Request')
+                              ->disableOriginalConstructor()
+                              ->getMock();
+
+        $this->response = $this->getMockBuilder('Response')
+                               ->disableOriginalConstructor()
+                               ->getMock();
     }
 
     /**
@@ -24,16 +34,17 @@ class BankAccountListControllerTest extends PHPUnit_Framework_TestCase
      */
     public function testReturnsListOfBankAccounts()
     {
-        $request  = new Request;
-        $response = new Response;
-
         $this->mapper->expects($this->any())
                      ->method('getAllIds')
                      ->will($this->returnValue(array(1)));
 
-        $view = $this->controller->execute($request, $response);
+        $this->response->expects($this->once())
+                       ->method('set')
+                       ->with($this->equalTo('ids'),
+                              $this->equalTo(array(1)));
+
+        $view = $this->controller->execute($this->request, $this->response);
 
         $this->assertEquals('BankAccountListView', $view);
-        $this->assertEquals(array(1), $response->get('ids'));
     }
 }
