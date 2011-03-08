@@ -1,6 +1,16 @@
 <?php
+/**
+ * @Entity
+ */
 class BankAccount
 {
+    /**
+     * @Id @GeneratedValue @Column(type="integer")
+     * @var int
+     */
+    protected $id;
+    
+    /** @Column(type="integer") */
     protected $balance = 0;
 
     public function getBalance()
