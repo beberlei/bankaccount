@@ -10,6 +10,7 @@ spl_autoload_register(
             'bankaccountlistcontroller' => '/controller/BankAccountListController.php',
             'bankaccountlistview' => '/view/BankAccountListView.php',
             'bankaccountmapper' => '/persistence/BankAccountMapper.php',
+            'pdobankaccountmapper' => '/persistence/PDOBankAccountMapper.php',
             'bankaccountview' => '/view/BankAccountView.php',
             'controller' => '/framework/Controller.php',
             'controllerexception' => '/framework/ControllerException.php',

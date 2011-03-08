@@ -12,7 +12,7 @@ class MapperFactory
     {
         switch ($name) {
             case 'BankAccountMapper': {
-                return new BankAccountMapper($this->pdo);
+                return new PDOBankAccountMapper($this->pdo);
             }
             break;
 

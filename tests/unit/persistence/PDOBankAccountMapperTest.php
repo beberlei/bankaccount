@@ -2,7 +2,7 @@
 /**
  * @large
  */
-class BankAccountMapperTest extends PHPUnit_Extensions_Database_TestCase
+class PDOBankAccountMapperTest extends PHPUnit_Extensions_Database_TestCase
 {
     protected $db;
     protected $mapper;
@@ -13,7 +13,7 @@ class BankAccountMapperTest extends PHPUnit_Extensions_Database_TestCase
     protected function setUp()
     {
         $this->db     = new PDO('sqlite::memory:');
-        $this->mapper = new BankAccountMapper($this->db);
+        $this->mapper = new PDOBankAccountMapper($this->db);
 
         $this->db->exec(
           file_get_contents(__DIR__ . '/../../../database/bankaccount.sql')
