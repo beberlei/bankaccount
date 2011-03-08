@@ -13,15 +13,19 @@ $mapperFactory = new MapperFactory(
   new PDO('sqlite:' . dirname(__DIR__) . '/database/bankaccount.db')
 );
 
-$controllerFactory = new ControllerFactory($mapperFactory);
-$viewFactory       = new ViewFactory;
-$frontController   = new FrontController(
-                       $request, $response, $controllerFactory, $viewFactory
-                     );
-
 $router = new Router;
 $router->set('bankaccount',  'BankAccountController');
 $router->set('bankaccounts', 'BankAccountListController');
+
+$controllerFactory = new ControllerFactory($mapperFactory);
+$viewFactory       = new ViewFactory;
+$frontController   = new FrontController(
+                       $request,
+                       $response,
+                       $router,
+                       $controllerFactory,
+                       $viewFactory
+                     );
 
 $view = $frontController->dispatch($router);
 print $view->render();
