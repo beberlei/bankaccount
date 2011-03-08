@@ -12,7 +12,22 @@ class MapperFactory
     {
         switch ($name) {
             case 'BankAccountMapper': {
-                return new PDOBankAccountMapper($this->pdo);
+                if (extension_loaded('apc')) {
+                    $cache = new \Doctrine\Common\Cache\ApcCache();
+                } else {
+                    $cache = new \Doctrine\Common\Cache\ArrayCache();
+                }
+                $config = new Doctrine\ORM\Configuration();
+                $config->setProxyDir(__DIR__ . '/proxies'); // proxies not used
+                $config->setProxyNamespace('BankAccountProxies');
+                $config->setAutoGenerateProxyClasses(true);
+                $config->setMetadataCacheImpl($cache);
+                $config->setMetadataDriverImpl($config->newDefaultAnnotationDriver(array(
+                    __DIR__ . '/../model'
+                )));
+                
+                $em = \Doctrine\ORM\EntityManager::create(array('pdo' => $this->pdo), $config);
+                return new DoctrineBankAccountMapper($em);
             }
             break;
 
