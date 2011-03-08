@@ -42,7 +42,7 @@ class RouterTest extends PHPUnit_Framework_TestCase
 
     /**
      * @covers            Router::route
-     * @expectedException RuntimeException
+     * @expectedException RouterException
      */
     public function testExceptionWhenNoControllerCanBeSelected()
     {
@@ -52,7 +52,7 @@ class RouterTest extends PHPUnit_Framework_TestCase
 
     /**
      * @covers            Router::route
-     * @expectedException RuntimeException
+     * @expectedException RouterException
      */
     public function testExceptionWhenSomethingIsWrongWithTheValues()
     {
