@@ -13,7 +13,7 @@ class FrontControllerTest extends PHPUnit_Framework_TestCase
      */
     public function testDispatchingWorksCorrectly()
     {
-        $request  = new Request(array('REQUEST_URI' => '/test/'));
+        $request  = new Request(array('REQUEST_URI' => '/test'));
         $response = new Response;
 
         $frontController = new FrontController(

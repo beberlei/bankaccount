@@ -12,10 +12,6 @@ class Router extends HashMap
             throw new RuntimeException;
         }
 
-        if (isset($parts[0]) && $parts[0] == '') {
-            array_shift($parts);
-        }
-
         if (count($parts) % 2 != 0) {
             throw new RuntimeException;
         }
