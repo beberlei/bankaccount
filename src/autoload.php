@@ -21,6 +21,7 @@ spl_autoload_register(
             'request' => '/framework/Request.php',
             'response' => '/framework/Response.php',
             'router' => '/framework/Router.php',
+            'routerexception' => '/framework/RouterException.php',
             'view' => '/framework/View.php',
             'viewfactory' => '/framework/ViewFactory.php'
           );

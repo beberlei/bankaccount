@@ -9,11 +9,11 @@ class Router extends HashMap
         $controller = array_shift($parts);
 
         if (!isset($this->values[$controller])) {
-            throw new RuntimeException;
+            throw new RouterException;
         }
 
         if (count($parts) % 2 != 0) {
-            throw new RuntimeException;
+            throw new RouterException;
         }
 
         $keys  = array_keys($parts);
