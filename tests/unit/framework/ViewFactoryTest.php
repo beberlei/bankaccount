@@ -13,7 +13,7 @@ class ViewFactoryTest extends PHPUnit_Framework_TestCase
 
         $this->assertInstanceOf(
           'StdClass',
-          $viewFactory->getView('StdClass', new Request, new Response)
+          $viewFactory->getView('StdClass', new Response)
         );
     }
 }

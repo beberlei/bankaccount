@@ -26,10 +26,6 @@ class FrontController
           $this->request, $this->response
         );
 
-        $view = $this->viewFactory->getView(
-          $viewName, $this->request, $this->response
-        );
-
-        return $view;
+        return $this->viewFactory->getView($viewName, $this->response);
     }
 }

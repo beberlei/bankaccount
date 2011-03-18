@@ -28,6 +28,7 @@ class BankAccountController implements Controller
             );
         }
 
+        $response->set('id', $id);
         $response->set('balance', $ba->getBalance());
 
         return 'BankAccountView';

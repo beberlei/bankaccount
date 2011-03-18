@@ -5,7 +5,7 @@ class BankAccountView extends View
     {
         return sprintf(
           "The balance of bank account #%d is %0.2f.\n",
-          $this->request->get('id'),
+          $this->response->get('id'),
           $this->response->get('balance')
         );
     }

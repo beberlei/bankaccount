@@ -14,7 +14,7 @@ class BankAccountListViewTest extends ViewTestCase
                        ->with($this->equalTo('ids'))
                        ->will($this->returnValue(array(1)));
 
-        $view = new BankAccountListView($this->request, $this->response);
+        $view = new BankAccountListView($this->response);
 
         $this->assertEquals(
           '<ul><li><a href="/bankaccount/id/1">Bank Account #1</a></li></ul>',

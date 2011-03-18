@@ -27,7 +27,12 @@ class BankAccountControllerTest extends ControllerTestCase
                      ->method('findById')
                      ->will($this->returnValue(new BankAccount));
 
-        $this->response->expects($this->once())
+        $this->response->expects($this->at(0))
+                       ->method('set')
+                       ->with($this->equalTo('id'),
+                              $this->equalTo(1));
+
+        $this->response->expects($this->at(1))
                        ->method('set')
                        ->with($this->equalTo('balance'),
                               $this->equalTo(0));
