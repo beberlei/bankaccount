@@ -2,31 +2,15 @@
 /**
  * @small
  */
-class BankAccountControllerTest extends PHPUnit_Framework_TestCase
+class BankAccountControllerTest extends ControllerTestCase
 {
-    protected $controller;
-    protected $mapper;
-    protected $request;
-    protected $response;
-
     /**
      * @covers BankAccountController::__construct
      */
     protected function setUp()
     {
-        $this->mapper = $this->getMockBuilder('BankAccountMapper')
-                             ->disableOriginalConstructor()
-                             ->getMock();
-
+        parent::setUp();
         $this->controller = new BankAccountController($this->mapper);
-
-        $this->request = $this->getMockBuilder('Request')
-                              ->disableOriginalConstructor()
-                              ->getMock();
-
-        $this->response = $this->getMockBuilder('Response')
-                               ->disableOriginalConstructor()
-                               ->getMock();
     }
 
     /**
