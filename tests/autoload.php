@@ -24,6 +24,7 @@ spl_autoload_register(
             'testview' => '/unit/framework/fixture/TestView.php',
             'viewfactorytest' => '/unit/framework/ViewFactoryTest.php',
             'viewtest' => '/unit/framework/ViewTest.php',
+            'viewtestcase' => '/unit/ViewTestCase.php',
             'webtest' => '/system/WebTest.php'
           );
       }

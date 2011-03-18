@@ -2,22 +2,8 @@
 /**
  * @small
  */
-class BankAccountViewTest extends PHPUnit_Framework_TestCase
+class BankAccountViewTest extends ViewTestCase
 {
-    protected $request;
-    protected $response;
-
-    protected function setUp()
-    {
-        $this->request = $this->getMockBuilder('Request')
-                              ->disableOriginalConstructor()
-                              ->getMock();
-
-        $this->response = $this->getMockBuilder('Response')
-                               ->disableOriginalConstructor()
-                               ->getMock();
-    }
-
     /**
      * @covers BankAccountView::render
      */
