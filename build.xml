@@ -103,7 +103,8 @@
  <target name="phpdoc">
   <exec executable="phpdoc">
    <arg line="--directory ${source}
-              --target    ${basedir}/build/api" />
+              --target    ${basedir}/build/api
+              --ignore    autoload.php" />
   </exec>
  </target>
 
