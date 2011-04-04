@@ -27,5 +27,5 @@ $frontController   = new FrontController(
                        $viewFactory
                      );
 
-$view = $frontController->dispatch($router);
+$view = $frontController->dispatch();
 print $view->render();
