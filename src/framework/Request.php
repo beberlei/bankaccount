@@ -1,4 +1,8 @@
 <?php
+/**
+ * @package    bankaccount
+ * @subpackage framework
+ */
 class Request extends HashMap
 {
     protected $data;

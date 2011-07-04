@@ -1,4 +1,8 @@
 <?php
+/**
+ * @package    bankaccount
+ * @subpackage controller
+ */
 class BankAccountListController extends BankAccountController
 {
     public function execute(Request $request, Response $response)

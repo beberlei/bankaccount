@@ -1,4 +1,8 @@
 <?php
+/**
+ * @package    bankaccount
+ * @subpackage persistence
+ */
 class BankAccountMapper
 {
     protected $db;

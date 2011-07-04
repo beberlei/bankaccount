@@ -1,4 +1,8 @@
 <?php
+/**
+ * @package    bankaccount
+ * @subpackage view
+ */
 class BankAccountListView extends View
 {
     public function render()

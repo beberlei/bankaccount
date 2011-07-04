@@ -1,4 +1,8 @@
 <?php
+/**
+ * @package    bankaccount
+ * @subpackage framework
+ */
 class Response extends HashMap
 {
     protected $headers = array();

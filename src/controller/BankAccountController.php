@@ -1,4 +1,8 @@
 <?php
+/**
+ * @package    bankaccount
+ * @subpackage controller
+ */
 class BankAccountController implements Controller
 {
     protected $mapper;

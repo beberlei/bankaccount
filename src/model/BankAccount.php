@@ -1,4 +1,8 @@
 <?php
+/**
+ * @package    bankaccount
+ * @subpackage model
+ */
 class BankAccount
 {
     protected $balance = 0;
