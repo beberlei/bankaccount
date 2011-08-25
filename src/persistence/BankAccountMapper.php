@@ -11,7 +11,7 @@ class BankAccountMapper
     public function __construct(PDO $db)
     {
         $this->db          = $db;
-        $this->identityMap = new SplObjectStorage;
+        $this->identityMap = new IdentityMap;
     }
 
     public function getAllIds()
@@ -27,14 +27,8 @@ class BankAccountMapper
 
     public function findById($id)
     {
-        $this->identityMap->rewind();
-
-        while ($this->identityMap->valid()) {
-            if ($this->identityMap->getInfo() == $id) {
-                return $this->identityMap->current();
-            }
-
-            $this->identityMap->next();
+        if ($this->identityMap->hasId($id)) {
+            return $this->identityMap->getObject($id);
         }
 
         $result = $this->db->query(
@@ -58,14 +52,14 @@ class BankAccountMapper
         $attribute->setAccessible(TRUE);
         $attribute->setValue($ba, $balance);
 
-        $this->identityMap[$ba] = $id;
+        $this->identityMap->set($id, $ba);
 
         return $ba;
     }
 
     public function insert(BankAccount $ba)
     {
-        if (isset($this->identityMap[$ba])) {
+        if ($this->identityMap->hasObject($ba)) {
             throw new MapperException('Object has an ID, cannot insert.');
         }
 
@@ -76,12 +70,12 @@ class BankAccountMapper
           )
         );
 
-        $this->identityMap[$ba] = (int)$this->db->lastInsertId();
+        $this->identityMap->set((int)$this->db->lastInsertId(), $ba);
     }
 
     public function update(BankAccount $ba)
     {
-        if (!isset($this->identityMap[$ba])) {
+        if (!$this->identityMap->hasObject($ba)) {
             throw new MapperException('Object has no ID, cannot update.');
         }
 
@@ -89,24 +83,22 @@ class BankAccountMapper
           sprintf(
             'UPDATE bankaccount SET balance = %f WHERE id = %d;',
             $ba->getBalance(),
-            $this->identityMap[$ba]
+            $this->identityMap->getId($ba)
           )
         );
     }
 
     public function delete(BankAccount $ba)
     {
-        if (!isset($this->identityMap[$ba])) {
+        if (!$this->identityMap->hasObject($ba)) {
             throw new MapperException('Object has no ID, cannot delete.');
         }
 
         $this->db->exec(
           sprintf(
             'DELETE FROM bankaccount WHERE id = %d;',
-            $this->identityMap[$ba]
+            $this->identityMap->getId($ba)
           )
         );
-
-        unset($this->identityMap[$ba]);
     }
 }

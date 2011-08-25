@@ -16,6 +16,7 @@ spl_autoload_register(
             'controllerfactory' => '/framework/ControllerFactory.php',
             'frontcontroller' => '/framework/FrontController.php',
             'hashmap' => '/framework/HashMap.php',
+            'identitymap' => '/framework/IdentityMap.php',
             'mapperexception' => '/framework/MapperException.php',
             'mapperfactory' => '/framework/MapperFactory.php',
             'request' => '/framework/Request.php',
