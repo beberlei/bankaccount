@@ -2,7 +2,7 @@
 
 <project name="BankAccount" default="build">
  <target name="build"
-   depends="prepare,phpunit,parallelTasks,phpcb"/>
+   depends="prepare,lint,phpunit,parallelTasks,phpcb"/>
 
  <target name="clean" description="Cleanup build artifacts">
   <delete dir="${basedir}/build/api"/>
@@ -19,6 +19,20 @@
   <mkdir dir="${basedir}/build/coverage"/>
   <mkdir dir="${basedir}/build/logs"/>
   <mkdir dir="${basedir}/build/pdepend"/>
+ </target>
+
+ <target name="lint">
+  <apply executable="php" failonerror="true">
+   <arg value="-l" />
+
+   <fileset dir="${basedir}/src">
+    <include name="**/*.php" />
+   </fileset>
+
+   <fileset dir="${basedir}/tests">
+    <include name="**/*.php" />
+   </fileset>
+  </apply>
  </target>
 
  <target name="phpab" description="Generate autoloader scripts">
