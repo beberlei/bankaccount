@@ -3,4 +3,5 @@ build/code-browser
 build/coverage
 build/logs
 build/pdepend
+build.png
 phpunit.xml
