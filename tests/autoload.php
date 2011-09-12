@@ -16,6 +16,7 @@ spl_autoload_register(
             'controllertestcase' => '/unit/ControllerTestCase.php',
             'frontcontrollertest' => '/unit/framework/FrontControllerTest.php',
             'hashmaptest' => '/unit/framework/HashMapTest.php',
+            'identitymaptest' => '/unit/framework/IdentityMapTest.php',
             'mapperfactorytest' => '/unit/framework/MapperFactoryTest.php',
             'requesttest' => '/unit/framework/RequestTest.php',
             'responsetest' => '/unit/framework/ResponseTest.php',
