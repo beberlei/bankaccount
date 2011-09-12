@@ -2,7 +2,10 @@
 
 <project name="BankAccount" default="build">
  <target name="build"
-   depends="prepare,lint,phpunit,parallelTasks,phpcb"/>
+   depends="prepare,lint,phpunit,pdepend,phpmd,phpcpd,phpcs,phploc,phpcb"/>
+
+ <target name="build-parallel"
+   depends="prepare,lint,phpunit,tools-parallel,phpcb"/>
 
  <target name="clean" description="Cleanup build artifacts">
   <delete dir="${basedir}/build/api"/>
@@ -57,8 +60,8 @@
   <exec executable="phpunit" failonerror="true"/>
  </target>
 
- <target name="parallelTasks"
-         description="Run code analysis tasks in parallel">
+ <target name="tools-parallel"
+         description="Run tools in parallel">
   <parallel threadCount="2">
    <sequential>
     <antcall target="pdepend"/>
