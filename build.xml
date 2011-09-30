@@ -2,10 +2,23 @@
 
 <project name="BankAccount" default="build">
  <target name="build"
-   depends="prepare,lint,phpunit,pdepend,phpmd,phpcpd,phpcs,phploc,phpcb"/>
+   depends="prepare,lint,phploc,pdepend,phpmd,phpcs,phpcpd,phpunit,phpcb"/>
 
  <target name="build-parallel"
-   depends="prepare,lint,phpunit,tools-parallel,phpcb"/>
+   depends="prepare,lint,tools-parallel,phpunit,phpcb"/>
+
+ <target name="tools-parallel"
+         description="Run tools in parallel">
+  <parallel threadCount="2">
+   <sequential>
+    <antcall target="pdepend"/>
+    <antcall target="phpmd"/>
+   </sequential>
+   <antcall target="phpcpd"/>
+   <antcall target="phpcs"/>
+   <antcall target="phploc"/>
+  </parallel>
+ </target>
 
  <target name="clean" description="Cleanup build artifacts">
   <delete dir="${basedir}/build/api"/>
@@ -22,20 +35,6 @@
   <mkdir dir="${basedir}/build/coverage"/>
   <mkdir dir="${basedir}/build/logs"/>
   <mkdir dir="${basedir}/build/pdepend"/>
- </target>
-
- <target name="lint">
-  <apply executable="php" failonerror="true">
-   <arg value="-l" />
-
-   <fileset dir="${basedir}/src">
-    <include name="**/*.php" />
-   </fileset>
-
-   <fileset dir="${basedir}/tests">
-    <include name="**/*.php" />
-   </fileset>
-  </apply>
  </target>
 
  <target name="phpab" description="Generate autoloader scripts">
@@ -56,21 +55,26 @@
   </exec>
  </target>
 
- <target name="phpunit" description="Run unit tests with PHPUnit">
-  <exec executable="phpunit" failonerror="true"/>
+ <target name="lint">
+  <apply executable="php" failonerror="true">
+   <arg value="-l" />
+
+   <fileset dir="${basedir}/src">
+    <include name="**/*.php" />
+   </fileset>
+
+   <fileset dir="${basedir}/tests">
+    <include name="**/*.php" />
+   </fileset>
+  </apply>
  </target>
 
- <target name="tools-parallel"
-         description="Run tools in parallel">
-  <parallel threadCount="2">
-   <sequential>
-    <antcall target="pdepend"/>
-    <antcall target="phpmd"/>
-   </sequential>
-   <antcall target="phpcpd"/>
-   <antcall target="phpcs"/>
-   <antcall target="phploc"/>
-  </parallel>
+ <target name="phploc" description="Measure project size using PHPLOC">
+  <exec executable="phploc">
+   <arg value="--log-csv" />
+   <arg value="${basedir}/build/logs/phploc.csv" />
+   <arg path="${basedir}/src" />
+  </exec>
  </target>
 
  <target name="pdepend"
@@ -94,22 +98,6 @@
   </exec>
  </target>
 
- <target name="phpcpd" description="Find duplicate code using PHPCPD">
-  <exec executable="phpcpd">
-   <arg value="--log-pmd" />
-   <arg value="${basedir}/build/logs/pmd-cpd.xml" />
-   <arg path="${basedir}/src" />
-  </exec>
- </target>
-
- <target name="phploc" description="Measure project size using PHPLOC">
-  <exec executable="phploc">
-   <arg value="--log-csv" />
-   <arg value="${basedir}/build/logs/phploc.csv" />
-   <arg path="${basedir}/src" />
-  </exec>
- </target>
-
  <target name="phpcs"
          description="Find coding standard violations using PHP_CodeSniffer">
   <exec executable="phpcs" output="/dev/null">
@@ -118,6 +106,18 @@
    <arg value="--standard=${basedir}/build/phpcs.xml" />
    <arg path="${basedir}/src" />
   </exec>
+ </target>
+
+ <target name="phpcpd" description="Find duplicate code using PHPCPD">
+  <exec executable="phpcpd">
+   <arg value="--log-pmd" />
+   <arg value="${basedir}/build/logs/pmd-cpd.xml" />
+   <arg path="${basedir}/src" />
+  </exec>
+ </target>
+
+ <target name="phpunit" description="Run unit tests with PHPUnit">
+  <exec executable="phpunit" failonerror="true"/>
  </target>
 
  <target name="phpcb"
