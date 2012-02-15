@@ -1,11 +1,13 @@
 <?php
+use bankaccount\framework\Response;
+
 /**
  * @small
  */
 class ResponseTest extends PHPUnit_Framework_TestCase
 {
     /**
-     * @covers Response::getHeaders
+     * @covers bankaccount\framework\Response::getHeaders
      */
     public function testNoHeadersAreInitiallySet()
     {
@@ -16,7 +18,7 @@ class ResponseTest extends PHPUnit_Framework_TestCase
     }
 
     /**
-     * @covers  Response::addHeader
+     * @covers  bankaccount\framework\Response::addHeader
      * @depends testNoHeadersAreInitiallySet
      */
     public function testAddingHeadersWorks(Response $response)

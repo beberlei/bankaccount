@@ -1,6 +1,11 @@
 <?php
-require_once 'fixture/TestController.php';
-require_once 'fixture/TestView.php';
+use bankaccount\framework\FrontController;
+use bankaccount\framework\Request;
+use bankaccount\framework\Response;
+use bankaccount\framework\controller\Factory as ControllerFactory;
+use bankaccount\framework\persistence\Factory as MapperFactory;
+use bankaccount\framework\view\Factory as ViewFactory;
+use bankaccount\framework\router\Router;
 
 /**
  * @medium
@@ -8,8 +13,8 @@ require_once 'fixture/TestView.php';
 class FrontControllerTest extends PHPUnit_Framework_TestCase
 {
     /**
-     * @covers FrontController::__construct
-     * @covers FrontController::dispatch
+     * @covers bankaccount\framework\FrontController::__construct
+     * @covers bankaccount\framework\FrontController::dispatch
      */
     public function testDispatchingWorksCorrectly()
     {

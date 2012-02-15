@@ -8,15 +8,15 @@ abstract class ControllerTestCase extends PHPUnit_Framework_TestCase
 
     protected function setUp()
     {
-        $this->mapper = $this->getMockBuilder('BankAccountMapper')
+        $this->mapper = $this->getMockBuilder('bankaccount\\mapper\\BankAccount')
                              ->disableOriginalConstructor()
                              ->getMock();
 
-        $this->request = $this->getMockBuilder('Request')
+        $this->request = $this->getMockBuilder('bankaccount\\framework\\Request')
                               ->disableOriginalConstructor()
                               ->getMock();
 
-        $this->response = $this->getMockBuilder('Response')
+        $this->response = $this->getMockBuilder('bankaccount\\framework\\Response')
                                ->disableOriginalConstructor()
                                ->getMock();
     }

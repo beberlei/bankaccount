@@ -1,4 +1,6 @@
 <?php
+use bankaccount\framework\persistence\IdentityMap;
+
 /**
  * @small
  */
@@ -12,7 +14,7 @@ class IdentityMapTest extends PHPUnit_Framework_TestCase
     }
 
     /**
-     * @covers IdentityMap::__construct
+     * @covers bankaccount\framework\persistence\IdentityMap::__construct
      */
     public function testIsInitiallyEmpty()
     {
@@ -24,7 +26,7 @@ class IdentityMapTest extends PHPUnit_Framework_TestCase
     }
 
     /**
-     * @covers  IdentityMap::set
+     * @covers  bankaccount\framework\persistence\IdentityMap::set
      * @depends testIsInitiallyEmpty
      */
     public function testObjectCanBeAdded(IdentityMap $map)
@@ -41,8 +43,8 @@ class IdentityMapTest extends PHPUnit_Framework_TestCase
     }
 
     /**
-     * @covers  IdentityMap::getObject
-     * @covers  IdentityMap::hasId
+     * @covers  bankaccount\framework\persistence\IdentityMap::getObject
+     * @covers  bankaccount\framework\persistence\IdentityMap::hasId
      * @depends testObjectCanBeAdded
      */
     public function testObjectCanBeRetrievedById(IdentityMap $map)
@@ -51,7 +53,7 @@ class IdentityMapTest extends PHPUnit_Framework_TestCase
     }
 
     /**
-     * @covers            IdentityMap::getObject
+     * @covers            bankaccount\framework\persistence\IdentityMap::getObject
      * @depends           testObjectCanBeAdded
      * @expectedException OutOfBoundsException
      */
@@ -61,8 +63,8 @@ class IdentityMapTest extends PHPUnit_Framework_TestCase
     }
 
     /**
-     * @covers  IdentityMap::getId
-     * @covers  IdentityMap::hasObject
+     * @covers  bankaccount\framework\persistence\IdentityMap::getId
+     * @covers  bankaccount\framework\persistence\IdentityMap::hasObject
      * @depends testObjectCanBeAdded
      */
     public function testIdCanBeRetrievedForObject(IdentityMap $map)
@@ -71,7 +73,7 @@ class IdentityMapTest extends PHPUnit_Framework_TestCase
     }
 
     /**
-     * @covers            IdentityMap::getId
+     * @covers            bankaccount\framework\persistence\IdentityMap::getId
      * @depends           testObjectCanBeAdded
      * @expectedException OutOfBoundsException
      */

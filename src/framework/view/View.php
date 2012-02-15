@@ -1,8 +1,8 @@
 <?php
-/**
- * @package    bankaccount
- * @subpackage framework
- */
+namespace bankaccount\framework\view;
+
+use bankaccount\framework\Response;
+
 abstract class View
 {
     protected $response;

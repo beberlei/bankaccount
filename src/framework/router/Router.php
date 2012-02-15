@@ -1,8 +1,9 @@
 <?php
-/**
- * @package    bankaccount
- * @subpackage framework
- */
+namespace bankaccount\framework\router;
+
+use bankaccount\framework\HashMap;
+use bankaccount\framework\Request;
+
 class Router extends HashMap
 {
     public function route(Request $request)
@@ -13,11 +14,11 @@ class Router extends HashMap
         $controller = array_shift($parts);
 
         if (!isset($this->values[$controller])) {
-            throw new RouterException;
+            throw new Exception;
         }
 
         if (count($parts) % 2 != 0) {
-            throw new RouterException;
+            throw new Exception;
         }
 
         $keys  = array_keys($parts);

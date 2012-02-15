@@ -5,7 +5,7 @@ abstract class ViewTestCase extends PHPUnit_Framework_TestCase
 
     protected function setUp()
     {
-        $this->response = $this->getMockBuilder('Response')
+        $this->response = $this->getMockBuilder('bankaccount\\framework\\Response')
                                ->disableOriginalConstructor()
                                ->getMock();
     }

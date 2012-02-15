@@ -1,11 +1,13 @@
 <?php
+use bankaccount\model\BankAccount;
+
 /**
  * @small
  */
 class BankAccountTest extends PHPUnit_Framework_TestCase
 {
     /**
-     * @covers BankAccount::getBalance
+     * @covers bankaccount\model\BankAccount::getBalance
      */
     public function testBalanceIsInitiallyZero()
     {
@@ -16,11 +18,11 @@ class BankAccountTest extends PHPUnit_Framework_TestCase
     }
 
     /**
-     * @covers            BankAccount::withdrawMoney
-     * @covers            BankAccount::setBalance
-     * @covers            BankAccountException
+     * @covers            bankaccount\model\BankAccount::withdrawMoney
+     * @covers            bankaccount\model\BankAccount::setBalance
+     * @covers            bankaccount\model\BankAccountException
      * @depends           testBalanceIsInitiallyZero
-     * @expectedException BankAccountException
+     * @expectedException bankaccount\model\BankAccountException
      */
     public function testBalanceCannotBecomeNegative(BankAccount $ba)
     {
@@ -28,11 +30,11 @@ class BankAccountTest extends PHPUnit_Framework_TestCase
     }
 
     /**
-     * @covers            BankAccount::depositMoney
-     * @covers            BankAccount::setBalance
-     * @covers            BankAccountException
+     * @covers            bankaccount\model\BankAccount::depositMoney
+     * @covers            bankaccount\model\BankAccount::setBalance
+     * @covers            bankaccount\model\BankAccountException
      * @depends           testBalanceIsInitiallyZero
-     * @expectedException BankAccountException
+     * @expectedException bankaccount\model\BankAccountException
      */
     public function testBalanceCannotBecomeNegative2(BankAccount $ba)
     {
@@ -41,8 +43,8 @@ class BankAccountTest extends PHPUnit_Framework_TestCase
 
     /**
      * @depends testBalanceIsInitiallyZero
-     * @covers  BankAccount::depositMoney
-     * @covers  BankAccount::setBalance
+     * @covers  bankaccount\model\BankAccount::depositMoney
+     * @covers  bankaccount\model\BankAccount::setBalance
      */
     public function testDepositingMoneyWorks(BankAccount $ba)
     {
@@ -54,7 +56,7 @@ class BankAccountTest extends PHPUnit_Framework_TestCase
 
     /**
      * @depends testDepositingMoneyWorks
-     * @covers  BankAccount::withdrawMoney
+     * @covers  bankaccount\model\BankAccount::withdrawMoney
      */
     public function testWithdrawingMoneyWorks(BankAccount $ba)
     {

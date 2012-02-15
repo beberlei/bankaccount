@@ -1,8 +1,12 @@
 <?php
-/**
- * @package    bankaccount
- * @subpackage framework
- */
+namespace bankaccount\framework;
+
+use bankaccount\framework\controller\Factory as ControllerFactory;
+use bankaccount\framework\view\Factory as ViewFactory;
+use bankaccount\framework\router\Router;
+use bankaccount\framework\Request;
+use bankaccount\framework\Response;
+
 class FrontController
 {
     protected $request;

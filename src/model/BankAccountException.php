@@ -1,8 +1,6 @@
 <?php
-/**
- * @package    bankaccount
- * @subpackage model
- */
-class BankAccountException extends RuntimeException
+namespace bankaccount\model;
+
+class BankAccountException extends \RuntimeException
 {
 }

@@ -1,8 +1,6 @@
 <?php
-/**
- * @package    bankaccount
- * @subpackage framework
- */
+namespace bankaccount\framework\persistence;
+
 class IdentityMap
 {
     protected $idToObject = array();
@@ -10,7 +8,7 @@ class IdentityMap
 
     public function __construct()
     {
-        $this->objectToId = new SplObjectStorage;
+        $this->objectToId = new \SplObjectStorage;
     }
 
     public function set($id, $object)
@@ -27,7 +25,7 @@ class IdentityMap
     public function getId($object)
     {
         if (!$this->hasObject($object)) {
-            throw new OutOfBoundsException;
+            throw new \OutOfBoundsException;
         }
 
         return $this->objectToId[$object];
@@ -41,7 +39,7 @@ class IdentityMap
     public function getObject($id)
     {
         if (!$this->hasId($id)) {
-            throw new OutOfBoundsException;
+            throw new \OutOfBoundsException;
         }
 
         return $this->idToObject[$id];

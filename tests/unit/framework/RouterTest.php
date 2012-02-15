@@ -1,4 +1,7 @@
 <?php
+use bankaccount\framework\router\Router;
+use bankaccount\framework\Request;
+
 /**
  * @medium
  */
@@ -25,7 +28,7 @@ class RouterTest extends PHPUnit_Framework_TestCase
     }
 
     /**
-     * @covers Router::route
+     * @covers bankaccount\framework\router\Router::route
      */
     public function testCorrectControllerIsSelected()
     {
@@ -41,9 +44,9 @@ class RouterTest extends PHPUnit_Framework_TestCase
     }
 
     /**
-     * @covers            Router::route
-     * @covers            RouterException
-     * @expectedException RouterException
+     * @covers            bankaccount\framework\router\Router::route
+     * @covers            bankaccount\framework\router\Exception
+     * @expectedException bankaccount\framework\router\Exception
      */
     public function testExceptionWhenNoControllerCanBeSelected()
     {
@@ -52,9 +55,9 @@ class RouterTest extends PHPUnit_Framework_TestCase
     }
 
     /**
-     * @covers            Router::route
-     * @covers            RouterException
-     * @expectedException RouterException
+     * @covers            bankaccount\framework\router\Router::route
+     * @covers            bankaccount\framework\router\Exception
+     * @expectedException bankaccount\framework\router\Exception
      */
     public function testExceptionWhenSomethingIsWrongWithTheValues()
     {

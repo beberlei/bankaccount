@@ -1,9 +1,9 @@
 <?php
-/**
- * @package    bankaccount
- * @subpackage view
- */
-class BankAccountView extends View
+namespace bankaccount\view;
+
+use bankaccount\framework\view\View;
+
+class BankAccount extends View
 {
     public function render()
     {

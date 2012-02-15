@@ -1,11 +1,13 @@
 <?php
+use bankaccount\controller\BankAccount as BankAccountController;
+
 /**
  * @small
  */
 class BankAccountControllerTest extends ControllerTestCase
 {
     /**
-     * @covers BankAccountController::__construct
+     * @covers bankaccount\controller\BankAccount::__construct
      */
     protected function setUp()
     {
@@ -14,7 +16,7 @@ class BankAccountControllerTest extends ControllerTestCase
     }
 
     /**
-     * @covers BankAccountController::execute
+     * @covers bankaccount\controller\BankAccount::execute
      */
     public function testReturnsBankAccountViewWhenBankAccountIsSpecified()
     {
@@ -25,7 +27,9 @@ class BankAccountControllerTest extends ControllerTestCase
 
         $this->mapper->expects($this->any())
                      ->method('findById')
-                     ->will($this->returnValue(new BankAccount));
+                     ->will($this->returnValue(
+                       new bankaccount\model\BankAccount
+                     ));
 
         $this->response->expects($this->at(0))
                        ->method('set')
@@ -39,28 +43,28 @@ class BankAccountControllerTest extends ControllerTestCase
 
         $view = $this->controller->execute($this->request, $this->response);
 
-        $this->assertEquals('BankAccountView', $view);
+        $this->assertEquals('bankaccount\\view\\BankAccount', $view);
     }
 
     /**
-     * @covers            BankAccountController::execute
-     * @covers            ControllerException
-     * @expectedException ControllerException
+     * @covers            bankaccount\controller\BankAccount::execute
+     * @covers            bankaccount\framework\controller\Exception
+     * @expectedException bankaccount\framework\controller\Exception
      */
     public function testExceptionIsRaisedWhenBankAccountIsNotSpecified()
     {
         $this->request->expects($this->once())
                       ->method('get')
                       ->with($this->equalTo('id'))
-                      ->will($this->throwException(new OutOfBoundsException));
+                      ->will($this->throwException(new \OutOfBoundsException));
 
         $this->controller->execute($this->request, $this->response);
     }
 
     /**
-     * @covers            BankAccountController::execute
-     * @covers            ControllerException
-     * @expectedException ControllerException
+     * @covers            bankaccount\controller\BankAccount::execute
+     * @covers            bankaccount\framework\controller\Exception
+     * @expectedException bankaccount\framework\controller\Exception
      */
     public function testExceptionIsRaisedWhenBankAccountIsNotFound()
     {

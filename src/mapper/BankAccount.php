@@ -1,14 +1,15 @@
 <?php
-/**
- * @package    bankaccount
- * @subpackage persistence
- */
-class BankAccountMapper
+namespace bankaccount\mapper;
+
+use bankaccount\framework\persistence\IdentityMap;
+use bankaccount\framework\persistence\Exception;
+
+class BankAccount
 {
     protected $db;
     protected $identityMap;
 
-    public function __construct(PDO $db)
+    public function __construct(\PDO $db)
     {
         $this->db          = $db;
         $this->identityMap = new IdentityMap;
@@ -41,14 +42,14 @@ class BankAccountMapper
         $balance = $result->fetchColumn();
 
         if (!$balance) {
-            throw new OutOfBoundsException(
+            throw new \OutOfBoundsException(
               sprintf('No bank account with id #%d exists.', $id)
             );
         }
 
-        $ba = new BankAccount;
+        $ba = new \bankaccount\model\BankAccount;
 
-        $attribute = new ReflectionProperty($ba, 'balance');
+        $attribute = new \ReflectionProperty($ba, 'balance');
         $attribute->setAccessible(TRUE);
         $attribute->setValue($ba, $balance);
 
@@ -57,10 +58,10 @@ class BankAccountMapper
         return $ba;
     }
 
-    public function insert(BankAccount $ba)
+    public function insert(\bankaccount\model\BankAccount $ba)
     {
         if ($this->identityMap->hasObject($ba)) {
-            throw new MapperException('Object has an ID, cannot insert.');
+            throw new Exception('Object has an ID, cannot insert.');
         }
 
         $this->db->exec(
@@ -73,10 +74,10 @@ class BankAccountMapper
         $this->identityMap->set((int)$this->db->lastInsertId(), $ba);
     }
 
-    public function update(BankAccount $ba)
+    public function update(\bankaccount\model\BankAccount $ba)
     {
         if (!$this->identityMap->hasObject($ba)) {
-            throw new MapperException('Object has no ID, cannot update.');
+            throw new Exception('Object has no ID, cannot update.');
         }
 
         $this->db->exec(
@@ -88,10 +89,10 @@ class BankAccountMapper
         );
     }
 
-    public function delete(BankAccount $ba)
+    public function delete(\bankaccount\model\BankAccount $ba)
     {
         if (!$this->identityMap->hasObject($ba)) {
-            throw new MapperException('Object has no ID, cannot delete.');
+            throw new Exception('Object has no ID, cannot delete.');
         }
 
         $this->db->exec(

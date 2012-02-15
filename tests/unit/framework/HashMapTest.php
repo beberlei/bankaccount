@@ -1,11 +1,13 @@
 <?php
+use bankaccount\framework\HashMap;
+
 /**
  * @small
  */
 class HashMapTest extends PHPUnit_Framework_TestCase
 {
     /**
-     * @covers HashMap::get
+     * @covers bankaccount\framework\HashMap::get
      */
     public function testIsInitiallyEmpty()
     {
@@ -16,8 +18,8 @@ class HashMapTest extends PHPUnit_Framework_TestCase
     }
 
     /**
-     * @covers  HashMap::set
-     * @covers  HashMap::get
+     * @covers  bankaccount\framework\HashMap::set
+     * @covers  bankaccount\framework\HashMap::get
      * @depends testIsInitiallyEmpty
      */
     public function testSettingDataWorks(HashMap $store)
@@ -28,7 +30,7 @@ class HashMapTest extends PHPUnit_Framework_TestCase
     }
 
     /**
-     * @covers            HashMap::get
+     * @covers            bankaccount\framework\HashMap::get
      * @expectedException OutOfBoundsException
      */
     public function testExceptionIsRaisedWhenAccessingAnElementThatDoesNotExist()

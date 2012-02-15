@@ -1,8 +1,6 @@
 <?php
-/**
- * @package    bankaccount
- * @subpackage framework
- */
+namespace bankaccount\framework;
+
 class Response extends HashMap
 {
     protected $headers = array();
