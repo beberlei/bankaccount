@@ -1,7 +1,7 @@
 <?php
-namespace bankaccount\framework\mapper;
+namespace bankaccount\framework\factory;
 
-class Factory
+class MapperFactory
 {
     protected $pdo;
 

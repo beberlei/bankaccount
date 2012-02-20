@@ -1,9 +1,7 @@
 <?php
-namespace bankaccount\framework\controller;
+namespace bankaccount\framework\factory;
 
-use bankaccount\framework\mapper\Factory as MapperFactory;
-
-class Factory
+class ControllerFactory
 {
     protected $mapperFactory;
 

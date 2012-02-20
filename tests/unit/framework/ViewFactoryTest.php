@@ -1,6 +1,6 @@
 <?php
 use bankaccount\framework\http\Response;
-use bankaccount\framework\view\Factory;
+use bankaccount\framework\factory\ViewFactory;
 
 /**
  * @small
@@ -8,11 +8,11 @@ use bankaccount\framework\view\Factory;
 class ViewFactoryTest extends PHPUnit_Framework_TestCase
 {
     /**
-     * @covers bankaccount\framework\view\Factory::getView
+     * @covers bankaccount\framework\factory\ViewFactory::getView
      */
     public function testDefaultViewCanBeConstructed()
     {
-        $viewFactory = new Factory;
+        $viewFactory = new ViewFactory;
 
         $this->assertInstanceOf(
           'StdClass',

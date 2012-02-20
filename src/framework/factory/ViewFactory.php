@@ -1,9 +1,9 @@
 <?php
-namespace bankaccount\framework\view;
+namespace bankaccount\framework\factory;
 
 use bankaccount\framework\http\Response;
 
-class Factory
+class ViewFactory
 {
     public function getView($name, Response $response)
     {

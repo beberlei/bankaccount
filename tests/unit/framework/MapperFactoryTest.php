@@ -1,5 +1,5 @@
 <?php
-use bankaccount\framework\mapper\Factory as MapperFactory;
+use bankaccount\framework\factory\MapperFactory;
 
 /**
  * @small
@@ -9,7 +9,7 @@ class MapperFactoryTest extends PHPUnit_Framework_TestCase
     protected $mapperFactory;
 
     /**
-     * @covers bankaccount\framework\mapper\Factory::__construct
+     * @covers bankaccount\framework\factory\MapperFactory::__construct
      */
     protected function setUp()
     {
@@ -17,7 +17,7 @@ class MapperFactoryTest extends PHPUnit_Framework_TestCase
     }
 
     /**
-     * @covers bankaccount\framework\mapper\Factory::getMapper
+     * @covers bankaccount\framework\factory\MapperFactory::getMapper
      */
     public function testBankAccountMapperCanBeConstructed()
     {
@@ -28,7 +28,7 @@ class MapperFactoryTest extends PHPUnit_Framework_TestCase
     }
 
     /**
-     * @covers bankaccount\framework\mapper\Factory::getMapper
+     * @covers bankaccount\framework\factory\MapperFactory::getMapper
      */
     public function testDefaultMapperCanBeConstructed()
     {

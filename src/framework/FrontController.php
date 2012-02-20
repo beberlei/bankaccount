@@ -1,11 +1,11 @@
 <?php
 namespace bankaccount\framework;
 
-use bankaccount\framework\controller\Factory as ControllerFactory;
+use bankaccount\framework\factory\ControllerFactory;
+use bankaccount\framework\factory\ViewFactory;
 use bankaccount\framework\http\Request;
 use bankaccount\framework\http\Response;
 use bankaccount\framework\router\Router;
-use bankaccount\framework\view\Factory as ViewFactory;
 
 class FrontController
 {

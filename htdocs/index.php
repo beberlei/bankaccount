@@ -1,13 +1,13 @@
 <?php
 require __DIR__ . '/../src/autoload.php';
 
-use bankaccount\framework\FrontController;
+use bankaccount\framework\factory\ControllerFactory;
+use bankaccount\framework\factory\MapperFactory;
+use bankaccount\framework\factory\ViewFactory;
 use bankaccount\framework\http\Request;
 use bankaccount\framework\http\Response;
-use bankaccount\framework\controller\Factory as ControllerFactory;
-use bankaccount\framework\mapper\Factory as MapperFactory;
-use bankaccount\framework\view\Factory as ViewFactory;
 use bankaccount\framework\router\Router;
+use bankaccount\framework\FrontController;
 
 // Set some super-global variables for demo purposes.
 if (PHP_SAPI == 'cli') {

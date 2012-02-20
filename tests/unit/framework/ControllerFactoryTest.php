@@ -1,5 +1,5 @@
 <?php
-use bankaccount\framework\controller\Factory as ControllerFactory;
+use bankaccount\framework\factory\ControllerFactory;
 
 /**
  * @small
@@ -9,7 +9,7 @@ class ControllerFactoryTest extends PHPUnit_Framework_TestCase
     protected $controllerFactory;
 
     /**
-     * @covers bankaccount\framework\controller\Factory::__construct
+     * @covers bankaccount\framework\factory\ControllerFactory::__construct
      */
     protected function setUp()
     {
@@ -17,7 +17,7 @@ class ControllerFactoryTest extends PHPUnit_Framework_TestCase
                        ->disableOriginalConstructor()
                        ->getMock();
 
-        $mapperFactory = $this->getMockBuilder('bankaccount\\framework\\mapper\\Factory')
+        $mapperFactory = $this->getMockBuilder('bankaccount\\framework\\factory\\MapperFactory')
                               ->disableOriginalConstructor()
                               ->getMock();
 
@@ -29,7 +29,7 @@ class ControllerFactoryTest extends PHPUnit_Framework_TestCase
     }
 
     /**
-     * @covers bankaccount\framework\controller\Factory::getController
+     * @covers bankaccount\framework\factory\ControllerFactory::getController
      */
     public function testBankAccountControllerCanBeConstructed()
     {
@@ -40,7 +40,7 @@ class ControllerFactoryTest extends PHPUnit_Framework_TestCase
     }
 
     /**
-     * @covers bankaccount\framework\controller\Factory::getController
+     * @covers bankaccount\framework\factory\ControllerFactory::getController
      */
     public function testBankAccountListControllerCanBeConstructed()
     {
@@ -51,7 +51,7 @@ class ControllerFactoryTest extends PHPUnit_Framework_TestCase
     }
 
     /**
-     * @covers bankaccount\framework\controller\Factory::getController
+     * @covers bankaccount\framework\factory\ControllerFactory::getController
      */
     public function testDefaultControllerCanBeConstructed()
     {
