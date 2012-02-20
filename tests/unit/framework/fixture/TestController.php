@@ -7,6 +7,6 @@ class TestController implements ControllerInterface
 {
     public function execute(Request $request, Response $response)
     {
-        return new TestView($response);
+        return 'TestView';
     }
 }
