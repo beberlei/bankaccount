@@ -1,6 +1,6 @@
 <?php
+use bankaccount\framework\http\Response;
 use bankaccount\framework\view\Factory;
-use bankaccount\framework\Response;
 
 /**
  * @small

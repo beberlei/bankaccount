@@ -1,7 +1,7 @@
 <?php
 namespace bankaccount\framework\view;
 
-use bankaccount\framework\Response;
+use bankaccount\framework\http\Response;
 
 abstract class View
 {

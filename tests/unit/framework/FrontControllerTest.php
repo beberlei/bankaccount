@@ -1,11 +1,11 @@
 <?php
-use bankaccount\framework\FrontController;
-use bankaccount\framework\Request;
-use bankaccount\framework\Response;
 use bankaccount\framework\controller\Factory as ControllerFactory;
+use bankaccount\framework\http\Request;
+use bankaccount\framework\http\Response;
 use bankaccount\framework\mapper\Factory as MapperFactory;
-use bankaccount\framework\view\Factory as ViewFactory;
 use bankaccount\framework\router\Router;
+use bankaccount\framework\view\Factory as ViewFactory;
+use bankaccount\framework\FrontController;
 
 /**
  * @medium

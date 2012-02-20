@@ -1,8 +1,8 @@
 <?php
 namespace bankaccount\framework\router;
 
+use bankaccount\framework\http\Request;
 use bankaccount\framework\HashMap;
-use bankaccount\framework\Request;
 
 class Router extends HashMap
 {

@@ -1,5 +1,5 @@
 <?php
-use bankaccount\framework\Request;
+use bankaccount\framework\http\Request;
 
 /**
  * @small
@@ -7,8 +7,8 @@ use bankaccount\framework\Request;
 class RequestTest extends PHPUnit_Framework_TestCase
 {
     /**
-     * @covers bankaccount\framework\Request::__call
-     * @covers bankaccount\framework\Request::__construct
+     * @covers bankaccount\framework\http\Request::__call
+     * @covers bankaccount\framework\http\Request::__construct
      */
     public function testRequestUriCanBeRetrieved()
     {
@@ -17,7 +17,7 @@ class RequestTest extends PHPUnit_Framework_TestCase
     }
 
     /**
-     * @covers            bankaccount\framework\Request::__call
+     * @covers            bankaccount\framework\http\Request::__call
      * @expectedException InvalidArgumentException
      */
     public function testExceptionIsRaisedWhenRequestUriIsNotSet()
@@ -27,7 +27,7 @@ class RequestTest extends PHPUnit_Framework_TestCase
     }
 
     /**
-     * @covers            bankaccount\framework\Request::__call
+     * @covers            bankaccount\framework\http\Request::__call
      * @expectedException BadMethodCallException
      */
     public function testExceptionIsRaisedWhenIllegalVariableTypeIsRequested()

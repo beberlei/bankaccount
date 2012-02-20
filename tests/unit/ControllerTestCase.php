@@ -12,11 +12,11 @@ abstract class ControllerTestCase extends PHPUnit_Framework_TestCase
                              ->disableOriginalConstructor()
                              ->getMock();
 
-        $this->request = $this->getMockBuilder('bankaccount\\framework\\Request')
+        $this->request = $this->getMockBuilder('bankaccount\\framework\\http\\Request')
                               ->disableOriginalConstructor()
                               ->getMock();
 
-        $this->response = $this->getMockBuilder('bankaccount\\framework\\Response')
+        $this->response = $this->getMockBuilder('bankaccount\\framework\\http\\Response')
                                ->disableOriginalConstructor()
                                ->getMock();
     }

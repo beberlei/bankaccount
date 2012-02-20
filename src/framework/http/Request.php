@@ -1,5 +1,7 @@
 <?php
-namespace bankaccount\framework;
+namespace bankaccount\framework\http;
+
+use bankaccount\framework\HashMap;
 
 class Request extends HashMap
 {

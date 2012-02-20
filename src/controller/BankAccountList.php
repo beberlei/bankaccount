@@ -1,8 +1,8 @@
 <?php
 namespace bankaccount\controller;
 
-use bankaccount\framework\Request;
-use bankaccount\framework\Response;
+use bankaccount\framework\http\Request;
+use bankaccount\framework\http\Response;
 
 class BankAccountList extends BankAccount
 {

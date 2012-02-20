@@ -1,6 +1,6 @@
 <?php
+use bankaccount\framework\http\Request;
 use bankaccount\framework\router\Router;
-use bankaccount\framework\Request;
 
 /**
  * @medium

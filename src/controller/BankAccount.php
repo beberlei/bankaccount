@@ -3,9 +3,9 @@ namespace bankaccount\controller;
 
 use bankaccount\framework\controller\ControllerInterface;
 use bankaccount\framework\controller\Exception;
+use bankaccount\framework\http\Request;
+use bankaccount\framework\http\Response;
 use bankaccount\mapper\BankAccount as BankAccountMapper;
-use bankaccount\framework\Request;
-use bankaccount\framework\Response;
 
 class BankAccount implements ControllerInterface
 {
