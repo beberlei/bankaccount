@@ -1,5 +1,5 @@
 <?php
-namespace bankaccount\framework\persistence;
+namespace bankaccount\framework\mapper;
 
 class IdentityMap
 {

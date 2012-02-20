@@ -1,7 +1,7 @@
 <?php
 namespace bankaccount\framework\controller;
 
-use bankaccount\framework\persistence\Factory as MapperFactory;
+use bankaccount\framework\mapper\Factory as MapperFactory;
 
 class Factory
 {

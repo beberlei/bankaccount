@@ -1,8 +1,8 @@
 <?php
 namespace bankaccount\mapper;
 
-use bankaccount\framework\persistence\IdentityMap;
-use bankaccount\framework\persistence\Exception;
+use bankaccount\framework\mapper\IdentityMap;
+use bankaccount\framework\mapper\Exception;
 
 class BankAccount
 {

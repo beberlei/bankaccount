@@ -1,5 +1,5 @@
 <?php
-use bankaccount\framework\persistence\IdentityMap;
+use bankaccount\framework\mapper\IdentityMap;
 
 /**
  * @small
@@ -14,7 +14,7 @@ class IdentityMapTest extends PHPUnit_Framework_TestCase
     }
 
     /**
-     * @covers bankaccount\framework\persistence\IdentityMap::__construct
+     * @covers bankaccount\framework\mapper\IdentityMap::__construct
      */
     public function testIsInitiallyEmpty()
     {
@@ -26,7 +26,7 @@ class IdentityMapTest extends PHPUnit_Framework_TestCase
     }
 
     /**
-     * @covers  bankaccount\framework\persistence\IdentityMap::set
+     * @covers  bankaccount\framework\mapper\IdentityMap::set
      * @depends testIsInitiallyEmpty
      */
     public function testObjectCanBeAdded(IdentityMap $map)
@@ -43,8 +43,8 @@ class IdentityMapTest extends PHPUnit_Framework_TestCase
     }
 
     /**
-     * @covers  bankaccount\framework\persistence\IdentityMap::getObject
-     * @covers  bankaccount\framework\persistence\IdentityMap::hasId
+     * @covers  bankaccount\framework\mapper\IdentityMap::getObject
+     * @covers  bankaccount\framework\mapper\IdentityMap::hasId
      * @depends testObjectCanBeAdded
      */
     public function testObjectCanBeRetrievedById(IdentityMap $map)
@@ -53,7 +53,7 @@ class IdentityMapTest extends PHPUnit_Framework_TestCase
     }
 
     /**
-     * @covers            bankaccount\framework\persistence\IdentityMap::getObject
+     * @covers            bankaccount\framework\mapper\IdentityMap::getObject
      * @depends           testObjectCanBeAdded
      * @expectedException OutOfBoundsException
      */
@@ -63,8 +63,8 @@ class IdentityMapTest extends PHPUnit_Framework_TestCase
     }
 
     /**
-     * @covers  bankaccount\framework\persistence\IdentityMap::getId
-     * @covers  bankaccount\framework\persistence\IdentityMap::hasObject
+     * @covers  bankaccount\framework\mapper\IdentityMap::getId
+     * @covers  bankaccount\framework\mapper\IdentityMap::hasObject
      * @depends testObjectCanBeAdded
      */
     public function testIdCanBeRetrievedForObject(IdentityMap $map)
@@ -73,7 +73,7 @@ class IdentityMapTest extends PHPUnit_Framework_TestCase
     }
 
     /**
-     * @covers            bankaccount\framework\persistence\IdentityMap::getId
+     * @covers            bankaccount\framework\mapper\IdentityMap::getId
      * @depends           testObjectCanBeAdded
      * @expectedException OutOfBoundsException
      */

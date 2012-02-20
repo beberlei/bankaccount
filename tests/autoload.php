@@ -9,7 +9,7 @@ spl_autoload_register(
             'bankaccountcontrollertest' => '/unit/controller/BankAccountControllerTest.php',
             'bankaccountlistcontrollertest' => '/unit/controller/BankAccountListControllerTest.php',
             'bankaccountlistviewtest' => '/unit/view/BankAccountListViewTest.php',
-            'bankaccountmappertest' => '/unit/persistence/BankAccountMapperTest.php',
+            'bankaccountmappertest' => '/unit/mapper/BankAccountMapperTest.php',
             'bankaccounttest' => '/unit/model/BankAccountTest.php',
             'bankaccountviewtest' => '/unit/view/BankAccountViewTest.php',
             'controllerfactorytest' => '/unit/framework/ControllerFactoryTest.php',

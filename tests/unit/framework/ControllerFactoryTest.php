@@ -17,7 +17,7 @@ class ControllerFactoryTest extends PHPUnit_Framework_TestCase
                        ->disableOriginalConstructor()
                        ->getMock();
 
-        $mapperFactory = $this->getMockBuilder('bankaccount\\framework\\persistence\\Factory')
+        $mapperFactory = $this->getMockBuilder('bankaccount\\framework\\mapper\\Factory')
                               ->disableOriginalConstructor()
                               ->getMock();
 

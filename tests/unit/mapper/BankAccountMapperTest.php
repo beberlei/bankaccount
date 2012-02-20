@@ -84,8 +84,8 @@ class BankAccountMapperTest extends PHPUnit_Extensions_Database_TestCase
 
     /**
      * @covers            bankaccount\mapper\BankAccount::insert
-     * @covers            bankaccount\framework\persistence\Exception
-     * @expectedException bankaccount\framework\persistence\Exception
+     * @covers            bankaccount\framework\mapper\Exception
+     * @expectedException bankaccount\framework\mapper\Exception
      */
     public function testBankAccountCannotBeInsertedTwice()
     {
@@ -115,8 +115,8 @@ class BankAccountMapperTest extends PHPUnit_Extensions_Database_TestCase
 
     /**
      * @covers            bankaccount\mapper\BankAccount::update
-     * @covers            bankaccount\framework\persistence\Exception
-     * @expectedException bankaccount\framework\persistence\Exception
+     * @covers            bankaccount\framework\mapper\Exception
+     * @expectedException bankaccount\framework\mapper\Exception
      */
     public function testBankAccountThatDoesNotExistCannotBeUpdated()
     {
@@ -143,8 +143,8 @@ class BankAccountMapperTest extends PHPUnit_Extensions_Database_TestCase
 
     /**
      * @covers            bankaccount\mapper\BankAccount::delete
-     * @covers            bankaccount\framework\persistence\Exception
-     * @expectedException bankaccount\framework\persistence\Exception
+     * @covers            bankaccount\framework\mapper\Exception
+     * @expectedException bankaccount\framework\mapper\Exception
      */
     public function testBankAccountThatDoesNotExistCannotBeDeleted()
     {
