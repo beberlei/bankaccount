@@ -4,5 +4,6 @@ build/coverage
 build/logs
 build/pdepend
 build/phpdox
+build/bankaccount.phar
 phpunit.xml
 cache.properties

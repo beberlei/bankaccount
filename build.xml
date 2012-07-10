@@ -56,6 +56,16 @@
   </exec>
  </target>
 
+ <target name="phar" description="Generate PHP Archive (PHAR)">
+  <exec executable="phpab">
+   <arg value="--trusting" />
+   <arg value="--phar" />
+   <arg value="--output" />
+   <arg path="${basedir}/build/bankaccount.phar" />
+   <arg path="${basedir}/src" />
+  </exec>
+ </target>
+
  <target name="lint">
   <apply executable="php" failonerror="true">
    <arg value="-l" />
