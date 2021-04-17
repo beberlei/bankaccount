@@ -1,36 +1,22 @@
 <?php
+use bankaccount\controller\BankAccountList as BankAccountListController;
+
 /**
  * @small
  */
-class BankAccountListControllerTest extends PHPUnit_Framework_TestCase
+class BankAccountListControllerTest extends ControllerTestCase
 {
-    protected $controller;
-    protected $mapper;
-    protected $request;
-    protected $response;
-
     /**
-     * @covers BankAccountController::__construct
+     * @covers bankaccount\controller\BankAccount::__construct
      */
     protected function setUp()
     {
-        $this->mapper = $this->getMockBuilder('BankAccountMapper')
-                             ->disableOriginalConstructor()
-                             ->getMock();
-
+        parent::setUp();
         $this->controller = new BankAccountListController($this->mapper);
-
-        $this->request = $this->getMockBuilder('Request')
-                              ->disableOriginalConstructor()
-                              ->getMock();
-
-        $this->response = $this->getMockBuilder('Response')
-                               ->disableOriginalConstructor()
-                               ->getMock();
     }
 
     /**
-     * @covers BankAccountListController::execute
+     * @covers bankaccount\controller\BankAccountList::execute
      */
     public function testReturnsListOfBankAccounts()
     {
@@ -45,6 +31,6 @@ class BankAccountListControllerTest extends PHPUnit_Framework_TestCase
 
         $view = $this->controller->execute($this->request, $this->response);
 
-        $this->assertEquals('BankAccountListView', $view);
+        $this->assertEquals('bankaccount\view\BankAccountList', $view);
     }
 }

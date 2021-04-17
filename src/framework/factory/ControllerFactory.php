@@ -1,4 +1,6 @@
 <?php
+namespace bankaccount\framework\factory;
+
 class ControllerFactory
 {
     protected $mapperFactory;
@@ -11,16 +13,16 @@ class ControllerFactory
     public function getController($name)
     {
         switch ($name) {
-            case 'BankAccountController': {
-                return new BankAccountController(
-                  $this->mapperFactory->getMapper('BankAccountMapper')
+            case 'BankAccount': {
+                return new \bankaccount\controller\BankAccount(
+                  $this->mapperFactory->getMapper('BankAccount')
                 );
             }
             break;
 
-            case 'BankAccountListController': {
-                return new BankAccountListController(
-                  $this->mapperFactory->getMapper('BankAccountMapper')
+            case 'BankAccountList': {
+                return new \bankaccount\controller\BankAccountList(
+                  $this->mapperFactory->getMapper('BankAccount')
                 );
             }
             break;

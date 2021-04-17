@@ -1,6 +1,14 @@
 <?php
 require __DIR__ . '/../src/autoload.php';
 
+use bankaccount\framework\factory\ControllerFactory;
+use bankaccount\framework\factory\MapperFactory;
+use bankaccount\framework\factory\ViewFactory;
+use bankaccount\framework\http\Request;
+use bankaccount\framework\http\Response;
+use bankaccount\framework\router\Router;
+use bankaccount\framework\FrontController;
+
 // Set some super-global variables for demo purposes.
 if (PHP_SAPI == 'cli') {
     $_SERVER['REQUEST_URI'] = '/bankaccount/id/1';
@@ -14,8 +22,8 @@ $mapperFactory = new MapperFactory(
 );
 
 $router = new Router;
-$router->set('bankaccount',  'BankAccountController');
-$router->set('bankaccounts', 'BankAccountListController');
+$router->set('bankaccount',  'BankAccount');
+$router->set('bankaccounts', 'BankAccountList');
 
 $controllerFactory = new ControllerFactory($mapperFactory);
 $viewFactory       = new ViewFactory;
@@ -27,5 +35,5 @@ $frontController   = new FrontController(
                        $viewFactory
                      );
 
-$view = $frontController->dispatch($router);
+$view = $frontController->dispatch();
 print $view->render();

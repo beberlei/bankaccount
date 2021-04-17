@@ -1,4 +1,8 @@
 <?php
+namespace bankaccount\framework\http;
+
+use bankaccount\framework\HashMap;
+
 class Request extends HashMap
 {
     protected $data;
@@ -23,12 +27,12 @@ class Request extends HashMap
         $type = substr($type, 3);
 
         if (!isset($this->data[$type])) {
-            throw new BadMethodCallException;
+            throw new \BadMethodCallException;
         }
 
         if (empty($arguments) ||
             !isset($this->data[$type][$arguments[0]])) {
-            throw new InvalidArgumentException;
+            throw new \InvalidArgumentException;
         }
 
         return $this->data[$type][$arguments[0]];

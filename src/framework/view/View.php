@@ -1,12 +1,14 @@
 <?php
+namespace bankaccount\framework\view;
+
+use bankaccount\framework\http\Response;
+
 abstract class View
 {
-    protected $request;
     protected $response;
 
-    public function __construct(Request $request, Response $response)
+    public function __construct(Response $response)
     {
-        $this->request  = $request;
         $this->response = $response;
     }
 

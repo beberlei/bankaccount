@@ -1,9 +1,11 @@
 <?php
+namespace bankaccount\framework\factory;
+
 class MapperFactory
 {
     protected $pdo;
 
-    public function __construct(PDO $pdo)
+    public function __construct(\PDO $pdo)
     {
         $this->pdo = $pdo;
     }
@@ -11,8 +13,8 @@ class MapperFactory
     public function getMapper($name)
     {
         switch ($name) {
-            case 'BankAccountMapper': {
-                return new BankAccountMapper($this->pdo);
+            case 'BankAccount': {
+                return new \bankaccount\mapper\BankAccount($this->pdo);
             }
             break;
 

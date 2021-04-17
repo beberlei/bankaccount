@@ -1,4 +1,6 @@
 <?php
-class BankAccountException extends RuntimeException
+namespace bankaccount\model;
+
+class BankAccountException extends \RuntimeException
 {
 }

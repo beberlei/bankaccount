@@ -1,4 +1,12 @@
 <?php
+namespace bankaccount\framework;
+
+use bankaccount\framework\factory\ControllerFactory;
+use bankaccount\framework\factory\ViewFactory;
+use bankaccount\framework\http\Request;
+use bankaccount\framework\http\Response;
+use bankaccount\framework\router\Router;
+
 class FrontController
 {
     protected $request;
@@ -26,10 +34,6 @@ class FrontController
           $this->request, $this->response
         );
 
-        $view = $this->viewFactory->getView(
-          $viewName, $this->request, $this->response
-        );
-
-        return $view;
+        return $this->viewFactory->getView($viewName, $this->response);
     }
 }

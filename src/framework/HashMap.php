@@ -1,4 +1,6 @@
 <?php
+namespace bankaccount\framework;
+
 class HashMap
 {
     protected $values = array();
@@ -11,7 +13,7 @@ class HashMap
     public function get($key)
     {
         if (!isset($this->values[$key])) {
-            throw new OutOfBoundsException;
+            throw new \OutOfBoundsException;
         }
 
         return $this->values[$key];

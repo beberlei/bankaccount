@@ -1,30 +1,28 @@
 <?php
+use bankaccount\framework\http\Response;
+use bankaccount\framework\view\View;
+
 /**
  * @medium
  */
 class ViewTest extends PHPUnit_Framework_TestCase
 {
-    protected $request;
     protected $response;
     protected $view;
 
     /**
-     * @covers View::__construct
+     * @covers bankaccount\framework\view\View::__construct
      */
     protected function setUp()
     {
-        $this->request  = new Request;
         $this->response = new Response;
-        $this->view     = $this->getMockBuilder('View')
-                               ->setConstructorArgs(
-                                   array($this->request, $this->response)
-                                 )
+        $this->view     = $this->getMockBuilder('bankaccount\\framework\\view\\View')
+                               ->setConstructorArgs(array($this->response))
                                ->getMockForAbstractClass();
     }
 
     public function testViewObjectCanBeConstructed()
     {
-        $this->assertAttributeSame($this->request,  'request',  $this->view);
         $this->assertAttributeSame($this->response, 'response', $this->view);
     }
 }

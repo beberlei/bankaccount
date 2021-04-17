@@ -1,19 +1,22 @@
 <?php
+use bankaccount\framework\http\Response;
+use bankaccount\framework\factory\ViewFactory;
+
 /**
  * @small
  */
 class ViewFactoryTest extends PHPUnit_Framework_TestCase
 {
     /**
-     * @covers ViewFactory::getView
+     * @covers bankaccount\framework\factory\ViewFactory::getView
      */
-    public function testDefaultMapperCanBeConstructed()
+    public function testDefaultViewCanBeConstructed()
     {
         $viewFactory = new ViewFactory;
 
         $this->assertInstanceOf(
           'StdClass',
-          $viewFactory->getView('StdClass', new Request, new Response)
+          $viewFactory->getView('StdClass', new Response)
         );
     }
 }

@@ -1,4 +1,6 @@
 <?php
+use bankaccount\framework\factory\ControllerFactory;
+
 /**
  * @small
  */
@@ -7,15 +9,15 @@ class ControllerFactoryTest extends PHPUnit_Framework_TestCase
     protected $controllerFactory;
 
     /**
-     * @covers ControllerFactory::__construct
+     * @covers bankaccount\framework\factory\ControllerFactory::__construct
      */
     protected function setUp()
     {
-        $mapper = $this->getMockBuilder('BankAccountMapper')
+        $mapper = $this->getMockBuilder('bankaccount\\mapper\\BankAccount')
                        ->disableOriginalConstructor()
                        ->getMock();
 
-        $mapperFactory = $this->getMockBuilder('MapperFactory')
+        $mapperFactory = $this->getMockBuilder('bankaccount\\framework\\factory\\MapperFactory')
                               ->disableOriginalConstructor()
                               ->getMock();
 
@@ -27,29 +29,29 @@ class ControllerFactoryTest extends PHPUnit_Framework_TestCase
     }
 
     /**
-     * @covers ControllerFactory::getController
+     * @covers bankaccount\framework\factory\ControllerFactory::getController
      */
     public function testBankAccountControllerCanBeConstructed()
     {
         $this->assertInstanceOf(
-          'BankAccountController',
-          $this->controllerFactory->getController('BankAccountController')
+          '\bankaccount\controller\BankAccount',
+          $this->controllerFactory->getController('BankAccount')
         );
     }
 
     /**
-     * @covers ControllerFactory::getController
+     * @covers bankaccount\framework\factory\ControllerFactory::getController
      */
     public function testBankAccountListControllerCanBeConstructed()
     {
         $this->assertInstanceOf(
-          'BankAccountListController',
-          $this->controllerFactory->getController('BankAccountListController')
+          '\bankaccount\controller\BankAccountList',
+          $this->controllerFactory->getController('BankAccountList')
         );
     }
 
     /**
-     * @covers ControllerFactory::getController
+     * @covers bankaccount\framework\factory\ControllerFactory::getController
      */
     public function testDefaultControllerCanBeConstructed()
     {

@@ -1,4 +1,6 @@
 <?php
+namespace bankaccount\model;
+
 class BankAccount
 {
     protected $balance = 0;
